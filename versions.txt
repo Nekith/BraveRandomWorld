@@ -1,0 +1,42 @@
+== 0.1 ================================
+
++ generate basic world
++ summary screen
+- location : list actors
+- location : talk to actor
+- actor : go back to location
+
+== 0.2 ================================
+
+- generate several actors
+- generate several locations
+- street : move
+- location : go out
+
+== 0.3 ================================
+
+- generate secrets
+- actor : buy secret
+- book : learned secrets
+- actor : trade resources
+
+== 0.4 ================================
+
+- actor : trade items
+- street : random events
+? item : XXX
+
+== 0.5 ================================
+
+? end conditions
+? situation vars : chaos, ...
+? starts non-citizen
+
+== 0.9 ================================
+
+? objectives
+? random rules of the dystopia
+
+3 ends: get killed, get arrested and erased, success
+
+=======================================
