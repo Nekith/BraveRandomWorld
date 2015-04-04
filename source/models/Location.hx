@@ -1,15 +1,16 @@
 package models;
 
-enum LocationType
+enum LocationNature
 {
+    Streets;
     Elysium;
+    Stock;
 }
 
 class Location
 {
-    public var name : String;
-    public var type : LocationType;
-    public var factor : Faction;
+    public var nature : LocationNature;
+    public var faction : Faction;
 
     public function new()
     {

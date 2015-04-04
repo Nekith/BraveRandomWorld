@@ -46,7 +46,7 @@ class BuilderState extends FlxState
         } else if (Reg.locations.length == 0) {
             generateLocations();
             bar.percent = 90.0;
-        } else if (Reg.name == null) {
+        } else if (Reg.gender == null) {
             generateCharacter();
             bar.percent = 100.0;
         } else {
@@ -134,9 +134,21 @@ class BuilderState extends FlxState
 
     private function generateLocations() : Void
     {
-        var location : Location = new Location();
-        location.name = "lol";
-        Reg.locations.push(location);
+        var streets : Location = new Location();
+        streets.nature = LocationNature.Streets;
+        Reg.locations.push(streets);
+        for (faction in Reg.factions) {
+            if (faction.resource.nature == ResourceNature.Material) {
+                var elysium : Location = new Location();
+                elysium.faction = faction;
+                elysium.nature = LocationNature.Elysium;
+                Reg.locations.push(elysium);
+                var stock : Location = new Location();
+                stock.faction = faction;
+                stock.nature = LocationNature.Stock;
+                Reg.locations.push(stock);
+            }
+        }
     }
 
     private function generateCharacter() : Void

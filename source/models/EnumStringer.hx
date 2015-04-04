@@ -20,9 +20,9 @@ class EnumStringer
 
     public static function ethnyStatusVerbose(s : EthnyStatus) : String
     {
-        var str : String = "a not-yet installed ethny";
+        var str : String = "a not-yet installed minority";
         if (s == EthnyStatus.Dominant) {
-            str = "the dominant ethny";
+            str = "the dominant one";
         } else if (s == EthnyStatus.Installed) {
             str = "an installed minority";
         }

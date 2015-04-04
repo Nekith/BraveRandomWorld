@@ -9,7 +9,7 @@
 == 0.2 =====================================
 
 + generate material factions
-- generate material factions locations
++ generate material factions locations
 - generate street location
 - move between known locations
 - action, material location: resource loan

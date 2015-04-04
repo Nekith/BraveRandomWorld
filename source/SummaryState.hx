@@ -16,15 +16,15 @@ class SummaryState extends WindowState
     {
         super.create();
         width = 780;
-        addText(["This is the Republic."]);
+        addText(["This is the Republic. This is the world."]);
         addText([""]);
-        addText(["The world is ruled by ", Reg.resources[0].name, ", ", EnumStringer.resourceNatureVerbose(Reg.resources[0].nature), "."],
+        addText(["The Republic is ruled by ", Reg.resources[0].name, ", ", EnumStringer.resourceNatureVerbose(Reg.resources[0].nature), "."],
                 [null, models.Resource.formatForNature(Reg.resources[0].nature), null, null, null]);
         addText([""]);
         addText(["You're a citizen, ", EnumStringer.genderVerbose(Reg.gender), "."]);
-        addText(["You're from the ", Reg.ethny.name, ", ", EnumStringer.ethnyStatusVerbose(Reg.ethny.status), "."]);
+        addText(["You're from the ", Reg.ethny.name, " ethny, ", EnumStringer.ethnyStatusVerbose(Reg.ethny.status), "."]);
         if (Reg.cult != null) {
-            addText(["You're associated to the ", Reg.cult.name, ", ", EnumStringer.cultStatusVerbose(Reg.cult.status), "."]);
+            addText(["You're associated with the ", Reg.cult.name, ", ", EnumStringer.cultStatusVerbose(Reg.cult.status), "."]);
         } else {
             addText(["You're not associated with any cult."]);
         }
@@ -44,11 +44,13 @@ class SummaryState extends WindowState
         Reg.resources = [];
         Reg.ethnies = [];
         Reg.cults = [];
+        Reg.factions = [];
         Reg.locations = [];
-        Reg.name = null;
         Reg.gender = null;
         Reg.ethny = null;
         Reg.cult = null;
+        Reg.cards = ["live" => 1];
+        Reg.location = null;
         FlxG.switchState(new BuilderState());
     }
 
