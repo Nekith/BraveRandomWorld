@@ -136,16 +136,19 @@ class BuilderState extends FlxState
     {
         var streets : Location = new Location();
         streets.nature = LocationNature.Streets;
+        streets.known = true;
         Reg.locations.push(streets);
         for (faction in Reg.factions) {
             if (faction.resource.nature == ResourceNature.Material) {
                 var elysium : Location = new Location();
                 elysium.faction = faction;
                 elysium.nature = LocationNature.Elysium;
+                elysium.known = true;
                 Reg.locations.push(elysium);
                 var stock : Location = new Location();
                 stock.faction = faction;
                 stock.nature = LocationNature.Stock;
+                stock.known = false;
                 Reg.locations.push(stock);
             }
         }
@@ -161,5 +164,6 @@ class BuilderState extends FlxState
         } else {
             Reg.gender = Gender.Other;
         }
+        Reg.location = Reg.locations[0];
     }
 }

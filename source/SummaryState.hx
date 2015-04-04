@@ -15,7 +15,7 @@ class SummaryState extends WindowState
     override public function create() : Void
     {
         super.create();
-        width = 780;
+        width = 790;
         addText(["This is the Republic. This is the world."]);
         addText([""]);
         addText(["The Republic is ruled by ", Reg.resources[0].name, ", ", EnumStringer.resourceNatureVerbose(Reg.resources[0].nature), "."],
@@ -56,7 +56,6 @@ class SummaryState extends WindowState
 
     public function play() : Void
     {
-        Reg.location = Reg.locations[0];
         FlxG.switchState(new LocationState());
     }
 }

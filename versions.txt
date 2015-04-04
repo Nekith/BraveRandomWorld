@@ -10,9 +10,9 @@
 
 + generate material factions
 + generate material factions locations
-- generate street location
-- move between known locations
-- action, material location: resource loan
++ generate street location
++ move between known locations
+- action, material elysium: resource loan
 
 == 0.3 =====================================
 
@@ -36,6 +36,9 @@
 
 ============================================
 
+
+
+- get rid of flixel-addons and FlxButtonPlus
 
 
 

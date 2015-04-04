@@ -3,6 +3,7 @@ package models;
 import models.Cult;
 import models.Ethny;
 import models.Gender;
+import models.Location;
 import models.Resource;
 
 class EnumStringer
@@ -36,6 +37,17 @@ class EnumStringer
             str = "the official religion";
         } else if (s == CultStatus.Recognized) {
             str = "a recognized religious organization";
+        }
+        return str;
+    }
+
+    public static function locationNature(n : LocationNature) : String
+    {
+        var str : String = "the streets";
+        if (n == LocationNature.Elysium) {
+            str = "Elysium";
+        } else if (n == LocationNature.Stock) {
+            str = "Stock";
         }
         return str;
     }

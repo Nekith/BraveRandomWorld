@@ -1,27 +1,31 @@
 package;
 
+import flash.Lib;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
+import flixel.addons.ui.FlxButtonPlus;
 
 class WindowState extends FlxState
 {
 	private var width : Float;
-	private var counter : Float;
+	private var textCounter : Float;
+	private var choiceCounter : Float;
 
 	override public function create() : Void
 	{
-		width = 480.0;
-		counter = 5.0;
+		width = Lib.current.stage.stageWidth - 210.0;
+		textCounter = 5.0;
+		choiceCounter = 0.0;
 		super.create();
 	}
 
 	private function addText(strings : Array<String>, ?formats : Array<FlxTextFormat>) : FlxText
 	{
-		var text : FlxText = new FlxText(5.0, counter, width);
+		var text : FlxText = new FlxText(5.0, textCounter, width);
 		var str : String = "";
 		var offset : Int = 0;
 		for (i in 0...strings.length) {
@@ -34,7 +38,19 @@ class WindowState extends FlxState
 		}
 		text.size = 14;
         add(text);
-        counter += 20.0;
+        textCounter += 20.0;
         return text;
+	}
+
+	@:generic
+	private function addChoice<T>(label : String, action : T -> Void, arg : T)
+	{
+		var x : Float = 5.0 + Math.max(0, Math.floor(choiceCounter / 150.0)) * 255.0;
+		var y : Float = Lib.current.stage.stageHeight - choiceCounter % 150.0 - 25.0;
+		var button : FlxButtonPlus = new FlxButtonPlus(x, y, function() {
+			action(arg);
+		}, label, 250);
+		add(button);
+		choiceCounter += 25.0;
 	}
 }
