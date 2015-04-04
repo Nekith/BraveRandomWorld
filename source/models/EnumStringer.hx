@@ -53,7 +53,7 @@ class EnumStringer
 
     public static function genderVerbose(g : Gender) : String
     {
-        var str : String = "third gender";
+        var str : String = "of the third gender";
         if (g == Gender.Man) {
             str = "a man";
         } else if (g == Gender.Woman) {

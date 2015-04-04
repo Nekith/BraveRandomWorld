@@ -10,7 +10,9 @@ import flixel.util.FlxMath;
 import flixel.util.FlxRandom;
 import models.Cult;
 import models.Ethny;
+import models.Faction;
 import models.Gender;
+import models.Location;
 import models.Resource;
 
 class BuilderState extends FlxState
@@ -21,7 +23,7 @@ class BuilderState extends FlxState
     {
         var x : Float = Lib.current.stage.stageWidth;
         var y : Float = Lib.current.stage.stageHeight;
-        add(new FlxText(x - 130.0, y - 45.0, 130.0, "Creating world...", 12));
+        add(new FlxText(x - 130.0, y - 45.0, 130.0, "Generating...", 12));
         bar = new FlxBar(x - 130.0, y - 25.0, FlxBar.FILL_LEFT_TO_RIGHT, 125, 20);
         add(bar);
         super.create();
@@ -31,16 +33,22 @@ class BuilderState extends FlxState
     {
         if (Reg.resources.length == 0) {
             generateResources();
-            bar.percent = 20.0;
+            bar.percent = 18.0;
         } else if (Reg.ethnies.length == 0) {
             generateEthnies();
-            bar.percent = 40.0;
+            bar.percent = 36.0;
         } else if (Reg.cults.length == 0) {
             generateCults();
-            bar.percent = 60.0;
+            bar.percent = 54.0;
+        } else if (Reg.factions.length == 0) {
+            generateFactions();
+            bar.percent = 72.0;
+        } else if (Reg.locations.length == 0) {
+            generateLocations();
+            bar.percent = 90.0;
         } else if (Reg.name == null) {
             generateCharacter();
-            bar.percent = 80.0;
+            bar.percent = 100.0;
         } else {
             FlxG.switchState(new SummaryState());
         }
@@ -112,9 +120,27 @@ class BuilderState extends FlxState
         }
     }
 
+    private function generateFactions() : Void
+    {
+        for (resource in Reg.resources) {
+            if (resource.nature == ResourceNature.Material) {
+                var faction : Faction = new Faction();
+                faction.name = "The " + Generator.name(FlxRandom.intRanged(2, 4)) + " " + Generator.materialFactionSuffix();
+                faction.resource = resource;
+                Reg.factions.push(faction);
+            }
+        }
+    }
+
+    private function generateLocations() : Void
+    {
+        var location : Location = new Location();
+        location.name = "lol";
+        Reg.locations.push(location);
+    }
+
     private function generateCharacter() : Void
     {
-        Reg.name = Generator.name(FlxRandom.intRanged(3, 5));
         var rand : Int = FlxRandom.intRanged(0, 3);
         if (rand == 0) {
             Reg.gender = Gender.Man;

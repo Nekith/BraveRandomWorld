@@ -19,6 +19,11 @@ class Generator
         return cults[FlxRandom.intRanged(0, cults.length - 1)];
     }
 
+    static public function materialFactionSuffix() : String
+    {
+        return materials[FlxRandom.intRanged(0, materials.length - 1)];
+    }
+
     static private var syllabus : Array<String> = [
         "ba", "bi", "bo", "bu",
         "ca", "ce", "ci", "co", "chi",
@@ -35,5 +40,9 @@ class Generator
 
     static private var cults : Array<String> = [
         "Church", "Cult", "Religion", "Faith", "Creed", "Following", "School",
+    ];
+
+    static private var materials : Array<String> = [
+        "Syndicate", "Bank", "Group", "Consortium", "Foundation",
     ];
 }

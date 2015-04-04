@@ -1,42 +1,50 @@
-== 0.1 ================================
+== 0.1 =====================================
 
-+ generate basic world
++ generate resources
++ generate ethnies
++ generate cults
++ generate character
 + summary screen
-- location : list actors
-- location : talk to actor
-- actor : go back to location
 
-== 0.2 ================================
+== 0.2 =====================================
 
-- generate several actors
-- generate several locations
-- street : move
-- location : go out
++ generate material factions
+- generate material factions locations
+- generate street location
+- move between known locations
+- action, material location: resource loan
 
-== 0.3 ================================
+== 0.3 =====================================
 
-- generate secrets
-- actor : buy secret
-- book : learned secrets
-- actor : trade resources
+- associate cults with resources
+- cult: get baptized
+- generate social factions
+- generate social factions locations
+- social faction: buy a member card
 
-== 0.4 ================================
+== 0.4 =====================================
 
-- actor : trade items
+- street: find seller
+- book: world status
+- inventory
+- street: buy melee weapon
+- street: buy ranged weapon
+
+== 0.5 =====================================
+
+- street, melee weapon: racket someone
+
+============================================
+
+
+
+
+? racism, ostracism, sexism
 - street : random events
-? item : XXX
-
-== 0.5 ================================
-
 ? end conditions
 ? situation vars : chaos, ...
-? starts non-citizen
-
-== 0.9 ================================
-
 ? objectives
 ? random rules of the dystopia
-
 3 ends: get killed, get arrested and erased, success
 
-=======================================
+

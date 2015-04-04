@@ -21,7 +21,7 @@ class SummaryState extends WindowState
         addText(["The world is ruled by ", Reg.resources[0].name, ", ", EnumStringer.resourceNatureVerbose(Reg.resources[0].nature), "."],
                 [null, models.Resource.formatForNature(Reg.resources[0].nature), null, null, null]);
         addText([""]);
-        addText(["Your name is ", Reg.name, ", ", EnumStringer.genderVerbose(Reg.gender), "."]);
+        addText(["You're a citizen, ", EnumStringer.genderVerbose(Reg.gender), "."]);
         addText(["You're from the ", Reg.ethny.name, ", ", EnumStringer.ethnyStatusVerbose(Reg.ethny.status), "."]);
         if (Reg.cult != null) {
             addText(["You're associated to the ", Reg.cult.name, ", ", EnumStringer.cultStatusVerbose(Reg.cult.status), "."]);
@@ -44,6 +44,7 @@ class SummaryState extends WindowState
         Reg.resources = [];
         Reg.ethnies = [];
         Reg.cults = [];
+        Reg.locations = [];
         Reg.name = null;
         Reg.gender = null;
         Reg.ethny = null;
@@ -53,6 +54,7 @@ class SummaryState extends WindowState
 
     public function play() : Void
     {
-        FlxG.switchState(new PlayState());
+        Reg.location = Reg.locations[0];
+        FlxG.switchState(new LocationState());
     }
 }
