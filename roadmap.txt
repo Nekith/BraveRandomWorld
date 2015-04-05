@@ -1,0 +1,135 @@
+== 0.1 =====================================
+
++ generate resources
++ generate ethnies
++ generate cults
++ generate character
++ summary screen
+
+== 0.2 =====================================
+
++ generate material factions
++ generate material factions locations
++ generate street location
++ move between known locations
++ material elysium: resource loan
+
+== 0.3 =====================================
+
++ associate cults with resources
++ generate cults locations
++ cult elysium: get initiated
++ material elysium: trade material resources
++ generate social factions
+
+== 0.4 =====================================
+
++ generate social factions elysium
++ generate social factions high-life bar
++ social elysium: become member
+  right panel: status
+  social elysium: make donation
+
+== 0.5 =====================================
+
+  streets: buy weapon
+  streets: find gangsters
+  streets: rob business
+  card: wanted by police
+  right panel: cards
+
+== 0.6 =====================================
+
+  chaos counter
+  streets: random police check events
+  events: mind blast enemies
+  events: stab enemies
+  events: beat enemies up
+
+== 0.7 =====================================
+
+  social faction: police blank slate
+  generate apartment location
+  apartment: throw party
+  social elysium: persuade them
+  apartment: wealth indicator
+
+== 0.8 =====================================
+
+  generate low-life bar location
+  low-life: find young resource-less people
+  streets: find dealer
+  high-life: find young beautiful companion
+  apartment: drugs and young resource-less
+
+== 0.9 =====================================
+
+  streets: buy nice apparel (cost material)
+  apartment: call companion to offer apparel (add spiritual)
+  high-life: call companion (cost material, add social)
+  apartment: call companion to consume
+-
+
+== 0.10 ====================================
+
+  end condition: X in main resource
+  streets: chaos indicator
+  end condition: chaos too high
+  material elysium: call favors
+  buttons style
+
+== 0.11 ====================================
+
+  self-esteem
+  low-life: sell yourself
+  high-life: sell yourself
+  end condition: self-esteem too low
+  apartment: self-esteem indicator
+
+== 0.12 ====================================
+
+  generate dominant gender
+  generate other gender status
+  sexism effects
+?
+?
+
+? ethny status effects
+? cult status effects
+
+== Summary =================================
+
+cult:
+  friendly: get initiated (material)
+  exalted: enlight them (spiritual)
+
+material faction:
+  friendly: call favors (social, social friendly)
+  exalted:
+
+social faction:
+  friendly: become member (material)
+  exalted: persuade them (spiritual)
+
+gain material:
+  loan
+  rob business
+  trade material resources
+
+gain spiritual:
+  drugs and young resource-less
+  companion quest
+  ?
+
+gain social:
+  throw party
+  make donation
+  ?
+
+end conditions:
+  X in main resource
+  chaos too high
+  resistance is futile
+  self-esteem too low
+
+============================================
