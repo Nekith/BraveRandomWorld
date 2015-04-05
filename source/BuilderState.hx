@@ -34,19 +34,19 @@ class BuilderState extends FlxState
     {
         if (Reg.resources.length == 0) {
             generateResources();
-            bar.percent = 18.0;
+            bar.percent = 20.0;
         } else if (Reg.ethnies.length == 0) {
             generateEthnies();
-            bar.percent = 36.0;
+            bar.percent = 40.0;
         } else if (Reg.factions.length == 0) {
             generateFactions();
-            bar.percent = 54.0;
+            bar.percent = 60.0;
         } else if (Reg.locations.length == 0) {
             generateLocations();
-            bar.percent = 72.0;
+            bar.percent = 80.0;
         } else if (Reg.gender == null) {
             generateCharacter();
-            bar.percent = 90.0;
+            bar.percent = 100.0;
         } else {
             FlxG.switchState(new SummaryState());
         }
@@ -108,7 +108,11 @@ class BuilderState extends FlxState
             } else if (resource.nature == ResourceNature.Spiritual) {
                 var name : String = Generator.name(FlxRandom.intRanged(3, 5)) + " " + Generator.cultSuffix();
                 var status : CultStatus = (FlxRandom.intRanged(0, 3) == 0 ? CultStatus.Unrecognized : CultStatus.Recognized);
-                var cult : Cult = new Cult(name, status, resource);
+                var need : Resource = null;
+                do {
+                    need = Reg.resources[FlxRandom.intRanged(0, Reg.resources.length - 1)];
+                } while (need == resource);
+                var cult : Cult = new Cult(name, status, resource, need);
                 Reg.factions.push(cult);
                 cults.push(cult);
             }
@@ -132,6 +136,8 @@ class BuilderState extends FlxState
             if (faction.resource.nature == ResourceNature.Material) {
                 Reg.locations.push(new Location(LocationNature.Elysium, true, faction));
                 Reg.locations.push(new Location(LocationNature.Stock, false, faction));
+            } else if (faction.resource.nature == ResourceNature.Spiritual) {
+                Reg.locations.push(new Location(LocationNature.Elysium, true, faction));
             }
         }
     }

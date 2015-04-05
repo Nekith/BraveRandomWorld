@@ -17,18 +17,18 @@
 == 0.3 =====================================
 
 + associate cults with resources
++ generate cults locations
 - cult elysium: get baptized
 - generate social factions
 - generate social factions locations
-- social faction: buy a member card
 
 == 0.4 =====================================
 
+- social faction: buy a member card
 - right panel
 - street: find seller
 - book: world status
 - inventory
-- ???
 
 == 0.5 =====================================
 
