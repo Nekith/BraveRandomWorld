@@ -7,12 +7,15 @@ enum EthnyStatus
     Prejudiced;
 }
 
+@:allow(BuilderState)
 class Ethny
 {
-    public var name : String;
-    public var status : EthnyStatus;
+    public var name(default, null) : String;
+    public var status(default, null) : EthnyStatus;
 
-    public function new()
+    public function new(name : String)
     {
+        this.name = name;
+        status = EthnyStatus.Installed;
     }
 }

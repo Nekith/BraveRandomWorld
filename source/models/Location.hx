@@ -7,14 +7,18 @@ enum LocationNature
     Stock;
 }
 
+@:allow(BuilderState)
 class Location
 {
-    public var nature : LocationNature;
-    public var known : Bool;
-    public var faction : Faction;
+    public var nature(default, null) : LocationNature;
+    public var known(default, null) : Bool;
+    public var faction(default, null) : Faction;
 
-    public function new()
+    public function new(nature : LocationNature, known : Bool, ?faction : Faction)
     {
+        this.nature = nature;
+        this.known = known;
+        this.faction = faction;
     }
 
     public function name() : String

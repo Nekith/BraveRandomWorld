@@ -41,16 +41,7 @@ class SummaryState extends WindowState
 
     public function reroll() : Void
     {
-        Reg.resources = [];
-        Reg.ethnies = [];
-        Reg.cults = [];
-        Reg.factions = [];
-        Reg.locations = [];
-        Reg.gender = null;
-        Reg.ethny = null;
-        Reg.cult = null;
-        Reg.cards = ["live" => 1];
-        Reg.location = null;
+        Reg.clear();
         FlxG.switchState(new BuilderState());
     }
 

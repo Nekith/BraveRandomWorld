@@ -13,6 +13,7 @@ import models.Ethny;
 import models.Faction;
 import models.Gender;
 import models.Location;
+import models.MaterialFaction;
 import models.Resource;
 
 class BuilderState extends FlxState
@@ -58,27 +59,26 @@ class BuilderState extends FlxState
     private function generateResources() : Void
     {
         for (i in 0...5) {
-            var resource : Resource = new Resource();
+            var name : String;
             while (true) {
-                resource.name = Generator.name(2);
+                name = Generator.name(2);
                 var same : Bool = Reg.resources.filter(function(r : Resource) {
-                    return r.name == resource.name;
+                    return r.name == name;
                 }).length != 0;
                 if (same == false) {
                     break;
                 }
             }
+            var nature : ResourceNature;
             var rand : Int = FlxRandom.intRanged(0, 3);
             if (i == 0 || (i > 2 && rand == 0)) {
-                resource.nature = ResourceNature.Material;
+                nature = ResourceNature.Material;
             } else if (i == 1 || (i > 2 && rand == 1)) {
-                resource.nature = ResourceNature.Spiritual;
+                nature = ResourceNature.Spiritual;
             } else {
-                resource.nature = ResourceNature.Social;
+                nature = ResourceNature.Social;
             }
-            resource.isMajor = false;
-            resource.quantity = 15;
-            Reg.resources.push(resource);
+            Reg.resources.push(new Resource(name, nature));
         }
         Reg.resources = FlxRandom.shuffleArray(Reg.resources, 2);
         Reg.resources[0].isMajor = true;
@@ -89,9 +89,8 @@ class BuilderState extends FlxState
     private function generateEthnies() : Void
     {
         for (i in 0...4) {
-            var ethny : Ethny = new Ethny();
-            ethny.name = Generator.name(FlxRandom.intRanged(3, 6));
-            ethny.status = EthnyStatus.Installed;
+            var name : String = Generator.name(FlxRandom.intRanged(3, 6));
+            var ethny : Ethny = new Ethny(name);
             Reg.ethnies.push(ethny);
         }
         Reg.ethnies = FlxRandom.shuffleArray(Reg.ethnies, 2);
@@ -106,9 +105,9 @@ class BuilderState extends FlxState
     {
         var n : Int = FlxRandom.intRanged(1, 5);
         for (i in 0...n) {
-            var cult : Cult = new Cult();
-            cult.name = Generator.name(FlxRandom.intRanged(3, 5)) + " " + Generator.cultSuffix();
-            cult.status = (FlxRandom.intRanged(0, 3) == 0 ? CultStatus.Unrecognized : CultStatus.Recognized);
+            var name : String = Generator.name(FlxRandom.intRanged(3, 5)) + " " + Generator.cultSuffix();
+            var status : CultStatus = (FlxRandom.intRanged(0, 3) == 0 ? CultStatus.Unrecognized : CultStatus.Recognized);
+            var cult : Cult = new Cult(name, status);
             Reg.cults.push(cult);
         }
         Reg.cults = FlxRandom.shuffleArray(Reg.cults, 2);
@@ -117,6 +116,7 @@ class BuilderState extends FlxState
         }
         if (FlxRandom.int() % 2 == 0) {
             Reg.cult = Reg.cults[FlxRandom.intRanged(0, n - 1)];
+            Reg.cult.reputation = FactionReputation.Friendly;
         }
     }
 
@@ -124,32 +124,19 @@ class BuilderState extends FlxState
     {
         for (resource in Reg.resources) {
             if (resource.nature == ResourceNature.Material) {
-                var faction : Faction = new Faction();
-                faction.name = "The " + Generator.name(FlxRandom.intRanged(2, 4)) + " " + Generator.materialFactionSuffix();
-                faction.resource = resource;
-                Reg.factions.push(faction);
+                var name : String = "The " + Generator.name(FlxRandom.intRanged(2, 4)) + " " + Generator.materialFactionSuffix();
+                Reg.factions.push(new MaterialFaction(name, resource));
             }
         }
     }
 
     private function generateLocations() : Void
     {
-        var streets : Location = new Location();
-        streets.nature = LocationNature.Streets;
-        streets.known = true;
-        Reg.locations.push(streets);
+        Reg.locations.push(new Location(LocationNature.Streets, true));
         for (faction in Reg.factions) {
             if (faction.resource.nature == ResourceNature.Material) {
-                var elysium : Location = new Location();
-                elysium.faction = faction;
-                elysium.nature = LocationNature.Elysium;
-                elysium.known = true;
-                Reg.locations.push(elysium);
-                var stock : Location = new Location();
-                stock.faction = faction;
-                stock.nature = LocationNature.Stock;
-                stock.known = false;
-                Reg.locations.push(stock);
+                Reg.locations.push(new Location(LocationNature.Elysium, true, faction));
+                Reg.locations.push(new Location(LocationNature.Stock, false, faction));
             }
         }
     }

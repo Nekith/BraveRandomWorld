@@ -9,15 +9,20 @@ enum ResourceNature
     Social;
 }
 
+@:allow(BuilderState)
 class Resource
 {
-    public var name : String;
-    public var nature : ResourceNature;
-    public var isMajor : Bool;
-    public var quantity : Int;
+    public var name(default, null) : String;
+    public var nature(default, null) : ResourceNature;
+    public var isMajor(default, null) : Bool;
+    public var quantity(default, default) : Int;
 
-    public function new()
+    public function new(name : String, nature : ResourceNature)
     {
+        this.name = name;
+        this.nature = nature;
+        isMajor = false;
+        quantity = 15;
     }
 
     public static function colorForNature(nature : ResourceNature) : Int

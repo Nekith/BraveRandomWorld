@@ -25,4 +25,18 @@ class Reg
 
 	// @TODO
 	public static var save : FlxSave;
+
+    public static function clear() : Void
+    {
+        Reg.resources = [];
+        Reg.ethnies = [];
+        Reg.cults = [];
+        Reg.factions = [];
+        Reg.locations = [];
+        Reg.gender = null;
+        Reg.ethny = null;
+        Reg.cult = null;
+        Reg.cards = ["live" => 1];
+        Reg.location = null;
+    }
 }

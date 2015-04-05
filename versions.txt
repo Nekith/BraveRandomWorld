@@ -12,26 +12,28 @@
 + generate material factions locations
 + generate street location
 + move between known locations
-- action, material elysium: resource loan
++ material elysium: resource loan
 
 == 0.3 =====================================
 
 - associate cults with resources
-- cult: get baptized
+- cult elysium: get baptized
 - generate social factions
 - generate social factions locations
 - social faction: buy a member card
 
 == 0.4 =====================================
 
+- right panel
 - street: find seller
 - book: world status
 - inventory
-- street: buy melee weapon
-- street: buy ranged weapon
+- ???
 
 == 0.5 =====================================
 
+- street: buy melee weapon
+- street: buy ranged weapon
 - street, melee weapon: racket someone
 
 ============================================

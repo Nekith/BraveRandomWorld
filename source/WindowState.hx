@@ -14,6 +14,13 @@ class WindowState extends FlxState
 	private var width : Float;
 	private var textCounter : Float;
 	private var choiceCounter : Float;
+	private var flashStrings : Array<Array<String>>;
+
+	public function new(?strings : Array<Array<String>>)
+	{
+		super();
+		flashStrings = strings;
+	}
 
 	override public function create() : Void
 	{
@@ -42,15 +49,20 @@ class WindowState extends FlxState
         return text;
 	}
 
-	@:generic
-	private function addChoice<T>(label : String, action : T -> Void, arg : T)
+	private function addChoice(label : String, action : Void -> Void)
 	{
 		var x : Float = 5.0 + Math.max(0, Math.floor(choiceCounter / 150.0)) * 255.0;
 		var y : Float = Lib.current.stage.stageHeight - choiceCounter % 150.0 - 25.0;
-		var button : FlxButtonPlus = new FlxButtonPlus(x, y, function() {
-			action(arg);
-		}, label, 250);
+		var button : FlxButtonPlus = new FlxButtonPlus(x, y, action, label, 250);
 		add(button);
 		choiceCounter += 25.0;
+	}
+
+	@:generic
+	private function addChoiceWithArg<T>(label : String, action : T -> Void, arg : T)
+	{
+		addChoice(label, function() {
+			action(arg);
+		});
 	}
 }

@@ -1,5 +1,7 @@
 package models;
 
+import models.Resource;
+
 enum CultStatus
 {
     Official;
@@ -7,12 +9,14 @@ enum CultStatus
     Unrecognized;
 }
 
-class Cult
+@:allow(BuilderState)
+class Cult extends Faction
 {
-    public var name : String;
-    public var status : CultStatus;
+    public var status(default, null) : CultStatus;
 
-    public function new()
+    public function new(name : String, status : CultStatus)
     {
+        super(name, new Resource("lol", ResourceNature.Spiritual));
+        this.status = status;
     }
 }
