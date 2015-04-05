@@ -14,9 +14,9 @@ class Cult extends Faction
 {
     public var status(default, null) : CultStatus;
 
-    public function new(name : String, status : CultStatus)
+    public function new(name : String, status : CultStatus, resource : Resource)
     {
-        super(name, new Resource("lol", ResourceNature.Spiritual));
+        super(name, resource);
         this.status = status;
     }
 }

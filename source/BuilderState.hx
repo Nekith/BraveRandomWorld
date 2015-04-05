@@ -38,18 +38,15 @@ class BuilderState extends FlxState
         } else if (Reg.ethnies.length == 0) {
             generateEthnies();
             bar.percent = 36.0;
-        } else if (Reg.cults.length == 0) {
-            generateCults();
-            bar.percent = 54.0;
         } else if (Reg.factions.length == 0) {
             generateFactions();
-            bar.percent = 72.0;
+            bar.percent = 54.0;
         } else if (Reg.locations.length == 0) {
             generateLocations();
-            bar.percent = 90.0;
+            bar.percent = 72.0;
         } else if (Reg.gender == null) {
             generateCharacter();
-            bar.percent = 100.0;
+            bar.percent = 90.0;
         } else {
             FlxG.switchState(new SummaryState());
         }
@@ -101,31 +98,29 @@ class BuilderState extends FlxState
         Reg.ethny = Reg.ethnies[FlxRandom.intRanged(0, 3)];
     }
 
-    private function generateCults() : Void
-    {
-        var n : Int = FlxRandom.intRanged(1, 5);
-        for (i in 0...n) {
-            var name : String = Generator.name(FlxRandom.intRanged(3, 5)) + " " + Generator.cultSuffix();
-            var status : CultStatus = (FlxRandom.intRanged(0, 3) == 0 ? CultStatus.Unrecognized : CultStatus.Recognized);
-            var cult : Cult = new Cult(name, status);
-            Reg.cults.push(cult);
-        }
-        Reg.cults = FlxRandom.shuffleArray(Reg.cults, 2);
-        if (n == 1 || FlxRandom.int() % 2 == 0) {
-            Reg.cults[0].status = CultStatus.Official;
-        }
-        if (FlxRandom.int() % 2 == 0) {
-            Reg.cult = Reg.cults[FlxRandom.intRanged(0, n - 1)];
-            Reg.cult.reputation = FactionReputation.Friendly;
-        }
-    }
-
     private function generateFactions() : Void
     {
+        var cults : Array<Cult> = [];
         for (resource in Reg.resources) {
             if (resource.nature == ResourceNature.Material) {
                 var name : String = "The " + Generator.name(FlxRandom.intRanged(2, 4)) + " " + Generator.materialFactionSuffix();
                 Reg.factions.push(new MaterialFaction(name, resource));
+            } else if (resource.nature == ResourceNature.Spiritual) {
+                var name : String = Generator.name(FlxRandom.intRanged(3, 5)) + " " + Generator.cultSuffix();
+                var status : CultStatus = (FlxRandom.intRanged(0, 3) == 0 ? CultStatus.Unrecognized : CultStatus.Recognized);
+                var cult : Cult = new Cult(name, status, resource);
+                Reg.factions.push(cult);
+                cults.push(cult);
+            }
+        }
+        if (cults.length > 0) {
+            cults = FlxRandom.shuffleArray(cults, 2);
+            if (FlxRandom.int() % 2 == 0) {
+                cults[0].status = CultStatus.Official;
+            }
+            if (FlxRandom.int() % 2 == 0) {
+                Reg.cult = cults[FlxRandom.intRanged(0, cults.length - 1)];
+                Reg.cult.reputation = FactionReputation.Friendly;
             }
         }
     }

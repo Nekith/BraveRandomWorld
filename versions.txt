@@ -16,7 +16,7 @@
 
 == 0.3 =====================================
 
-- associate cults with resources
++ associate cults with resources
 - cult elysium: get baptized
 - generate social factions
 - generate social factions locations

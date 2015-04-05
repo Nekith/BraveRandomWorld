@@ -12,7 +12,6 @@ class Reg
 {
 	public static var resources : Array<Resource> = [];
 	public static var ethnies : Array<Ethny> = [];
-	public static var cults : Array<Cult> = [];
     public static var factions : Array<Faction> = [];
     public static var locations : Array<Location> = [];
 
@@ -30,7 +29,6 @@ class Reg
     {
         Reg.resources = [];
         Reg.ethnies = [];
-        Reg.cults = [];
         Reg.factions = [];
         Reg.locations = [];
         Reg.gender = null;
