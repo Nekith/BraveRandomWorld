@@ -104,7 +104,7 @@ class BuilderState extends FlxState
         var cults : Array<Cult> = [];
         for (resource in Reg.resources) {
             if (resource.nature == ResourceNature.Material) {
-                var name : String = "The " + Generator.name(FlxRandom.intRanged(2, 4)) + " " + Generator.materialFactionSuffix();
+                var name : String = Generator.name(FlxRandom.intRanged(2, 4)) + " " + Generator.materialFactionSuffix();
                 Reg.factions.push(new MaterialFaction(name, resource));
             } else if (resource.nature == ResourceNature.Spiritual) {
                 var name : String = Generator.name(FlxRandom.intRanged(3, 5)) + " " + Generator.cultSuffix();
@@ -140,6 +140,8 @@ class BuilderState extends FlxState
             if (faction.resource.nature == ResourceNature.Material) {
                 Reg.locations.push(new Location(LocationNature.Elysium, true, faction));
             } else if (faction.resource.nature == ResourceNature.Spiritual) {
+                Reg.locations.push(new Location(LocationNature.Elysium, true, faction));
+            } else if (faction.resource.nature == ResourceNature.Social) {
                 Reg.locations.push(new Location(LocationNature.Elysium, true, faction));
             }
         }

@@ -13,6 +13,7 @@ import models.Faction;
 import models.Location;
 import models.MaterialFaction;
 import models.Resource;
+import models.SocialFaction;
 
 class LocationState extends WindowState
 {
@@ -22,13 +23,15 @@ class LocationState extends WindowState
         if (Reg.location.nature == LocationNature.Streets) {
             createStreets();
         } else if (Reg.location.nature == LocationNature.Elysium) {
-            addText(["You're in the Elysium of ", Reg.location.faction.name, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
+            addText(["You're in the Elysium of the ", Reg.location.faction.name, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
             addText([""]);
             addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
             if (Reg.location.faction.resource.nature == ResourceNature.Material) {
                 createMaterialElysium();
             } else if (Reg.location.faction.resource.nature == ResourceNature.Spiritual) {
                 createCultElysium();
+            } else if (Reg.location.faction.resource.nature == ResourceNature.Social) {
+                createSocialElysium();
             }
         }
         if (flashStrings != null) {
@@ -90,6 +93,13 @@ class LocationState extends WindowState
                 }
             });
         }
+    }
+
+    private function createSocialElysium() : Void
+    {
+        addText(["A meeting venue."]);
+        addText(["It's warm, it's bright and there's a lot of people."]);
+        var faction : SocialFaction = cast(Reg.location.faction, SocialFaction);
     }
 
     public function move(location : Location)
