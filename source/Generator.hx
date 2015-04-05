@@ -24,6 +24,11 @@ class Generator
         return materials[FlxRandom.intRanged(0, materials.length - 1)];
     }
 
+    static public function socialFactionSuffix() : String
+    {
+        return socials[FlxRandom.intRanged(0, socials.length - 1)];
+    }
+
     static public function tradeComment() : String
     {
         return trade[FlxRandom.intRanged(0, trade.length - 1)];
@@ -48,7 +53,11 @@ class Generator
     ];
 
     static private var materials : Array<String> = [
-        "Syndicate", "Bank", "Group", "Consortium", "Foundation",
+        "Syndicate", "Bank", "Group", "Consortium", "Foundation", "Union", "Partnership",
+    ];
+
+    static private var socials : Array<String> = [
+        "Party", "Club", "Circle", "Society", "Order", "Association", "League",
     ];
 
     static private var trade : Array<String> = [

@@ -20,7 +20,7 @@
 + generate cults locations
 + cult elysium: get initiated
 + material elysium: trade material resources
-- generate social factions
++ generate social factions
 
 == 0.4 =====================================
 

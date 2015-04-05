@@ -15,6 +15,7 @@ import models.Gender;
 import models.Location;
 import models.MaterialFaction;
 import models.Resource;
+import models.SocialFaction;
 
 class BuilderState extends FlxState
 {
@@ -115,6 +116,9 @@ class BuilderState extends FlxState
                 var cult : Cult = new Cult(name, status, resource, need);
                 Reg.factions.push(cult);
                 cults.push(cult);
+            } else if (resource.nature == ResourceNature.Social) {
+                var name : String = Generator.name(FlxRandom.intRanged(2, 4)) + " " + Generator.socialFactionSuffix();
+                Reg.factions.push(new SocialFaction(name, resource));
             }
         }
         if (cults.length > 0) {
