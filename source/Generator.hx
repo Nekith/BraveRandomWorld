@@ -24,6 +24,11 @@ class Generator
         return materials[FlxRandom.intRanged(0, materials.length - 1)];
     }
 
+    static public function tradeComment() : String
+    {
+        return trade[FlxRandom.intRanged(0, trade.length - 1)];
+    }
+
     static private var syllabus : Array<String> = [
         "ba", "bi", "bo", "bu",
         "ca", "ce", "ci", "co", "chi",
@@ -44,5 +49,13 @@ class Generator
 
     static private var materials : Array<String> = [
         "Syndicate", "Bank", "Group", "Consortium", "Foundation",
+    ];
+
+    static private var trade : Array<String> = [
+        "Good transaction, thank you.",
+        "Oh, nice transaction.",
+        "Good, good. Thank you very much.",
+        "That's nice. Got a few more?",
+        "Oh yeah. Thanks.",
     ];
 }

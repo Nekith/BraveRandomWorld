@@ -19,7 +19,7 @@
 + associate cults with resources
 + generate cults locations
 + cult elysium: get initiated
-- material elysium: trade material resources
++ material elysium: trade material resources
 - generate social factions
 
 == 0.4 =====================================

@@ -66,6 +66,15 @@ class LocationState extends WindowState
                 }
             });
         }
+        for (resource in Reg.resources) {
+            if (resource != faction.resource && resource.nature == ResourceNature.Material) {
+                addChoiceWithArg("Give 2 " + resource.name + " for 2 " + faction.resource.name, function(other : Resource) {
+                    if (faction.trade(other) == true) {
+                        FlxG.switchState(new LocationState([[Generator.tradeComment()]]));
+                    }
+                }, resource);
+            }
+        }
     }
 
     private function createCultElysium() : Void

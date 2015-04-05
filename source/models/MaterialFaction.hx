@@ -35,4 +35,14 @@ class MaterialFaction extends Faction
         }
         return amount;
     }
+
+    public function trade(other : Resource) : Bool
+    {
+        if (other != resource && other.quantity >= 2) {
+            other.quantity -= 2;
+            resource.quantity += 2;
+            return true;
+        }
+        return false;
+    }
 }
