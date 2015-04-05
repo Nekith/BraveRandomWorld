@@ -7,6 +7,7 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.util.FlxMath;
 import flixel.util.FlxRandom;
+import models.Cult;
 import models.EnumStringer;
 import models.Faction;
 import models.Location;
@@ -26,9 +27,9 @@ class LocationState extends WindowState
             addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
             if (Reg.location.faction.resource.nature == ResourceNature.Material) {
                 createMaterialElysium();
+            } else if (Reg.location.faction.resource.nature == ResourceNature.Spiritual) {
+                createCultElysium();
             }
-        } else if (Reg.location.nature == LocationNature.Stock) {
-            //createStock();
         }
         if (flashStrings != null) {
             addText([""]);
@@ -59,9 +60,24 @@ class LocationState extends WindowState
         var faction : MaterialFaction = cast(Reg.location.faction, MaterialFaction);
         if (faction.loan <= 0) {
             var amount : String = Std.string(faction.loanAmount());
-            addChoice("Make a loan of " + amount + " (20% flat interest)", function() {
+            addChoice("Make a loan of " + amount + " " + faction.resource.name + " (20% flat interest)", function() {
                 if (faction.makeLoan() == true) {
                     FlxG.switchState(new LocationState([["You made a loan. Don't forget to repay it."]]));
+                }
+            });
+        }
+    }
+
+    private function createCultElysium() : Void
+    {
+        addText(["A spiritual place."]);
+        addText(["It's cold, it's dark and there's a lot of people."]);
+        var cult : Cult = cast(Reg.location.faction, Cult);
+        if (Reg.cult != cult) {
+            var amount : String = Std.string(cult.initiationCost());
+            addChoice("Get initiated (" + amount + " " + cult.need.name + ")", function() {
+                if (cult.getInitiated() == true) {
+                    FlxG.switchState(new LocationState([["You just get initiated. Do good, disciple."]]));
                 }
             });
         }

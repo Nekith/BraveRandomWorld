@@ -4,7 +4,6 @@ enum LocationNature
 {
     Streets;
     Elysium;
-    Stock;
 }
 
 @:allow(BuilderState)

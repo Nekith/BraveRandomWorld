@@ -1,5 +1,6 @@
 package models;
 
+import models.Faction;
 import models.Resource;
 
 enum CultStatus
@@ -19,5 +20,22 @@ class Cult extends Faction
     {
         super(name, resource);
         this.status = status;
+        this.need = need;
+    }
+
+    public function getInitiated() : Bool
+    {
+        if (Reg.cult != this && need.quantity >= initiationCost()) {
+            need.quantity -= initiationCost();
+            Reg.cult = this;
+            reputation = FactionReputation.Friendly;
+            return true;
+        }
+        return false;
+    }
+
+    public function initiationCost() : Int
+    {
+        return 3;
     }
 }

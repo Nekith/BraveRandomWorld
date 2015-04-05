@@ -29,9 +29,9 @@ class MaterialFaction extends Faction
     {
         var amount : Int = 10;
         if (reputation == FactionReputation.Exalted) {
-            amount += 6;
+            amount += 8;
         } else if (reputation == FactionReputation.Friendly) {
-            amount += 3;
+            amount += 4;
         }
         return amount;
     }

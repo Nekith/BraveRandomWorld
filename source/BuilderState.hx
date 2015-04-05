@@ -135,7 +135,6 @@ class BuilderState extends FlxState
         for (faction in Reg.factions) {
             if (faction.resource.nature == ResourceNature.Material) {
                 Reg.locations.push(new Location(LocationNature.Elysium, true, faction));
-                Reg.locations.push(new Location(LocationNature.Stock, false, faction));
             } else if (faction.resource.nature == ResourceNature.Spiritual) {
                 Reg.locations.push(new Location(LocationNature.Elysium, true, faction));
             }
