@@ -80,7 +80,7 @@ class BuilderState extends FlxState
         }
         Reg.resources = FlxRandom.shuffleArray(Reg.resources, 2);
         Reg.resources[0].isMajor = true;
-        Reg.resources[0].quantity = -10;
+        Reg.resources[0].quantity = -5;
         Reg.resources[1].quantity = 0;
     }
 
@@ -112,13 +112,17 @@ class BuilderState extends FlxState
                 var need : Resource = null;
                 do {
                     need = Reg.resources[FlxRandom.intRanged(0, Reg.resources.length - 1)];
-                } while (need == resource);
+                } while (need == resource && need.nature != ResourceNature.Material);
                 var cult : Cult = new Cult(name, status, resource, need);
                 Reg.factions.push(cult);
                 cults.push(cult);
             } else if (resource.nature == ResourceNature.Social) {
                 var name : String = Generator.name(FlxRandom.intRanged(2, 4)) + " " + Generator.socialFactionSuffix();
-                Reg.factions.push(new SocialFaction(name, resource));
+                var need : Resource = null;
+                do {
+                    need = Reg.resources[FlxRandom.intRanged(0, Reg.resources.length - 1)];
+                } while (need == resource && need.nature != ResourceNature.Material);
+                Reg.factions.push(new SocialFaction(name, resource, need));
             }
         }
         if (cults.length > 0) {
@@ -143,6 +147,7 @@ class BuilderState extends FlxState
                 Reg.locations.push(new Location(LocationNature.Elysium, true, faction));
             } else if (faction.resource.nature == ResourceNature.Social) {
                 Reg.locations.push(new Location(LocationNature.Elysium, true, faction));
+                Reg.locations.push(new Location(LocationNature.Playground, false, faction));
             }
         }
     }

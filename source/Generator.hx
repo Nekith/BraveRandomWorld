@@ -31,7 +31,17 @@ class Generator
 
     static public function tradeComment() : String
     {
-        return trade[FlxRandom.intRanged(0, trade.length - 1)];
+        return trades[FlxRandom.intRanged(0, trades.length - 1)];
+    }
+
+    static public function initiationComment() : String
+    {
+        return initiations[FlxRandom.intRanged(0, initiations.length - 1)];
+    }
+
+    static public function memberComment() : String
+    {
+        return members[FlxRandom.intRanged(0, members.length - 1)];
     }
 
     static private var syllabus : Array<String> = [
@@ -60,11 +70,27 @@ class Generator
         "Party", "Club", "Circle", "Society", "Order", "Association", "League",
     ];
 
-    static private var trade : Array<String> = [
+    static private var trades : Array<String> = [
         "Good transaction, thank you.",
         "Oh, nice transaction.",
         "Good, good. Thank you very much.",
         "That's nice. Got a few more?",
         "Oh yeah. Thanks.",
+    ];
+
+    static private var initiations : Array<String> = [
+        "Initiation is over. Do good, disciple.",
+        "That was a good rite, my friend. Welcome.",
+        "*nods his head and points you the exit with one hand*",
+        "*nods her head and points you the exit with one hand*",
+        "You just took a step further on the path of enlightment.",
+    ];
+
+    static private var members : Array<String> = [
+        "You were made for us. Welcome.",
+        "We all started there. Go on, be gone.",
+        "You deserve this. Congratulations! To life!",
+        "The family is expanding. Welcome, partner.",
+        "Make us proud, go earn some prestige in our name."
     ];
 }

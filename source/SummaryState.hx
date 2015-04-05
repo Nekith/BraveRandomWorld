@@ -35,6 +35,8 @@ class SummaryState extends WindowState
         addText(["You care because, you, you're at the botton of the social ladder."]);
         addText([""]);
         addText(["You got to do something."]);
+        addText(["Get a lot of ", Reg.resources[0].name, ". Or destroy everything. Or I don't know."],
+                [null, models.Resource.formatForNature(Reg.resources[0].nature)]);
         add(new FlxButtonPlus(100.0, Lib.current.stage.stageHeight - 50.0, reroll, "I don't like it, re-roll it", 200));
         add(new FlxButtonPlus(Lib.current.stage.stageWidth - 300.0, Lib.current.stage.stageHeight - 50.0, play, "Let's go", 200));
     }

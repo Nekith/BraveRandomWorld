@@ -33,12 +33,17 @@ class LocationState extends WindowState
             } else if (Reg.location.faction.resource.nature == ResourceNature.Social) {
                 createSocialElysium();
             }
+        } else if (Reg.location.nature == LocationNature.Playground) {
+            addText(["You're in the Playground of the ", Reg.location.faction.name, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
+            addText([""]);
+            addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
+            if (Reg.location.faction.resource.nature == ResourceNature.Social) {
+                createSocialPlayground();
+            }
         }
         if (flashStrings != null) {
             addText([""]);
-            for (strings in flashStrings) {
-                addText(strings);
-            }
+            addText(flashStrings, flashFormats);
         }
     }
 
@@ -65,7 +70,7 @@ class LocationState extends WindowState
             var amount : String = Std.string(faction.loanAmount());
             addChoice("Make a loan of " + amount + " " + faction.resource.name + " (20% flat interest)", function() {
                 if (faction.makeLoan() == true) {
-                    FlxG.switchState(new LocationState([["You made a loan. Don't forget to repay it."]]));
+                    FlxG.switchState(new LocationState(["Your loan is effective. Don't forget to repay it."], [new FlxTextFormat(0xCCFF66)]));
                 }
             });
         }
@@ -73,7 +78,7 @@ class LocationState extends WindowState
             if (resource != faction.resource && resource.nature == ResourceNature.Material) {
                 addChoiceWithArg("Give 2 " + resource.name + " for 2 " + faction.resource.name, function(other : Resource) {
                     if (faction.trade(other) == true) {
-                        FlxG.switchState(new LocationState([[Generator.tradeComment()]]));
+                        FlxG.switchState(new LocationState([Generator.tradeComment()], [new FlxTextFormat(0xCCFF66)]));
                     }
                 }, resource);
             }
@@ -89,7 +94,7 @@ class LocationState extends WindowState
             var amount : String = Std.string(cult.initiationCost());
             addChoice("Get initiated (" + amount + " " + cult.need.name + ")", function() {
                 if (cult.getInitiated() == true) {
-                    FlxG.switchState(new LocationState([["You just get initiated. Do good, disciple."]]));
+                    FlxG.switchState(new LocationState([Generator.initiationComment()], [new FlxTextFormat(0xCCFF66)]));
                 }
             });
         }
@@ -99,6 +104,21 @@ class LocationState extends WindowState
     {
         addText(["A meeting venue."]);
         addText(["It's warm, it's bright and there's a lot of people."]);
+        var faction : SocialFaction = cast(Reg.location.faction, SocialFaction);
+        if (faction.reputation == FactionReputation.Neutral) {
+            var amount : String = Std.string(faction.membershipCost());
+            addChoice("Become a member (" + amount + " " + faction.need.name + ")", function() {
+                if (faction.becomeMember() == true) {
+                    FlxG.switchState(new LocationState([Generator.memberComment()], [new FlxTextFormat(0xCCFF66)]));
+                }
+            });
+        }
+    }
+
+    private function createSocialPlayground() : Void
+    {
+        addText(["A hangout spot."]);
+        addText(["It's hot, it's classy and there's a lot of people."]);
         var faction : SocialFaction = cast(Reg.location.faction, SocialFaction);
     }
 

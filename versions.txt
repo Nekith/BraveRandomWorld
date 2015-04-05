@@ -25,8 +25,8 @@
 == 0.4 =====================================
 
 + generate social factions elysium
-- generate social factions high-life bar
-- social elysium: become member
++ generate social factions high-life bar
++ social elysium: become member
 - right panel: status
 - social elysium: make donation
 

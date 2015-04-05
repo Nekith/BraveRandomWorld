@@ -14,12 +14,14 @@ class WindowState extends FlxState
 	private var width : Float;
 	private var textCounter : Float;
 	private var choiceCounter : Float;
-	private var flashStrings : Array<Array<String>>;
+	private var flashStrings : Array<String>;
+	private var flashFormats : Array<FlxTextFormat>;
 
-	public function new(?strings : Array<Array<String>>)
+	public function new(?strings : Array<String>, ?formats : Array<FlxTextFormat>)
 	{
 		super();
 		flashStrings = strings;
+		flashFormats = formats;
 	}
 
 	override public function create() : Void

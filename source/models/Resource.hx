@@ -22,7 +22,7 @@ class Resource
         this.name = name;
         this.nature = nature;
         isMajor = false;
-        quantity = 15;
+        quantity = 10;
     }
 
     public static function colorForNature(nature : ResourceNature) : Int
