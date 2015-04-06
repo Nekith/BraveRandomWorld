@@ -45,9 +45,9 @@ class EnumStringer
     {
         var str : String = "the streets";
         if (n == LocationNature.Apartments) {
-            str = "your Apartments";
+            str = "Your Apartments";
         } else if (n == LocationNature.Lowlife) {
-            str = "the Lower Afterlife bar";
+            str = "Lower Afterlife bar";
         } else if (n == LocationNature.Elysium) {
             str = "Elysium";
         } else if (n == LocationNature.Playground) {

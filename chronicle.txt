@@ -6,6 +6,9 @@
 == 0.14 ====================================
 
   add other resources in summary
+  generate dominant gender
+  generate other gender status
+? sexism effects
 ? resistance quest
 
 == 0.13 ====================================
@@ -19,10 +22,10 @@
 == 0.12 ====================================
 
   social elysium: seduce them
-  generate dominant gender
-  generate other gender status
-  sexism effects
   cult elysium: enlight them (add all spiritual)
+  add sprawl location
+?
+?
 
 == 0.11 ====================================
 
@@ -54,7 +57,7 @@ x generate low-life bar location
 x low-life: find young low-life people
 x streets: buy drugs
 x playground: find young beautiful companion
-  apartment: drugs and young low-life
+x apartment: drugs and young low-life
 
 == 0.7 =====================================
 
@@ -114,40 +117,40 @@ x summary screen
 
 == Reputation : Material ===================
 
-+ friendly: call favors (social, social friendly)
+  friendly: call favors (social, social friendly)
 ? exalted:
 
 == Reputation : Cult =======================
 
-  friendly: get initiated
-+ exalted: enlight them (spiritual)
+x friendly: get initiated
+  exalted: enlight them (spiritual)
 
 == Reputation : Social =====================
 
-  friendly: become member
-+ exalted: seduce them (spiritual)
+x friendly: become member
+  exalted: seduce them (spiritual)
 
 == Resource : Material =====================
 
-  loan
-  robbery
-  trade
-+ sell yourself
+x loan
+x robbery
+x trade
+  sell yourself
 
 == Resource : Spiritual ====================
 
-+ drugs and young low-life
-+ companion quest
-+ disclosure
+x drugs and young low-life
+  companion quest
+  disclosure
 
 == Resource : Social =======================
 
-+ throw party
-  make donation
+  throw party
+x make donation
 
 == Companion Quest =========================
 
-  playground: find young beautiful companion
+x playground: find young beautiful companion
   streets: buy nice apparel
   apartment: call companion to offer apparel
   playground: call companion
@@ -157,9 +160,9 @@ x summary screen
 
 == End Conditions ==========================
 
-+ enough main resource
-+ chaos too high
-+ resistance is futile
-+ self-esteem too low
+  enough main resource
+  chaos too high
+  resistance is futile
+  self-esteem too low
 
 ============================================

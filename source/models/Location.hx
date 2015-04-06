@@ -27,7 +27,7 @@ class Location
     {
         var str : String = EnumStringer.locationNature(nature);
         if (faction != null) {
-            str = faction.name + " - " + str;
+            str += " of " + faction.name;
         }
         return str;
     }

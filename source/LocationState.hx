@@ -84,6 +84,19 @@ class LocationState extends WindowState
                 }
             }
         }
+        if (Reg.cards.exists("drugs") == true && Reg.cards.get("drugs") >= 1 && Reg.cards.exists("low-life") == true && Reg.cards.get("low-life") >= 1) {
+            for (resource in Reg.resources) {
+                if (resource.nature == ResourceNature.Spiritual) {
+                    addChoiceWithArg("Drugs and young low-life (add 3 " + resource.name + ")", function(spiritual : Resource) {
+                        if (Reg.cards.get("drugs") >= 1) {
+                            Reg.cards.set("drugs", Reg.cards.get("drugs") - 1);
+                            spiritual.quantity += 3;
+                            FlxG.switchState(new LocationState(["They want to come back. That's good. You're good."], [new FlxTextFormat(0xCCFF66)]));
+                        }
+                    }, resource);
+                }
+            }
+        }
     }
 
     private function createLowlife() : Void
@@ -93,13 +106,13 @@ class LocationState extends WindowState
         addText(["A low-life hangout place."]);
         addText(["It's hot, it's messy and there's a lot of people."]);
         addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
-        if (Reg.cards.exists("low-life contacts") == false || Reg.cards.get("young people contact") <= 1) {
+        if (Reg.cards.exists("low-life") == false || Reg.cards.get("low-life") <= 1) {
             for (resource in Reg.resources) {
                 if (resource.nature == ResourceNature.Material) {
                     addChoiceWithArg("Find young low-life contacts for 2 " + resource.name, function(material : Resource) {
                         if (material.quantity >= 2) {
                             material.quantity -= 2;
-                            Reg.cards.set("low-life contacts", FlxRandom.intRanged(2, 4));
+                            Reg.cards.set("low-life", FlxRandom.intRanged(2, 4));
                             FlxG.switchState(new LocationState(["Now I need something to boost them. Then, the apartments."], [new FlxTextFormat(0xCCFF66)]));
                         }
                     }, resource);
@@ -126,7 +139,7 @@ class LocationState extends WindowState
             if (location.nature == LocationNature.Streets || location.known == false) {
                 continue;
             }
-            addChoiceWithArg("Go to " + location.name(), move, location);
+            addChoiceWithArg(location.name(), move, location);
         }
         var materials : Array<Resource> = [];
         for (i in 0...Reg.resources.length) {
