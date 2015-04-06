@@ -67,6 +67,21 @@ class LocationState extends WindowState
         addText(["Your private home."]);
         addText(["It's comfortable, it's impersonal and there's nobody. Except you."]);
         addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
+        for (material in Reg.resources) {
+            if (material.nature == ResourceNature.Material) {
+                for (social in Reg.resources) {
+                    if (social.nature == ResourceNature.Social) {
+                        addChoiceWithArg("Throw a party (+2 " + social.name + ", -2 " + material.name, function(resources : Array<Resource>) {
+                            if (resources[0].quantity >= 2) {
+                                resources[0].quantity -= 2;
+                                resources[1].quantity += 2;
+                                FlxG.switchState(new LocationState(["Nice party. I guess."], [new FlxTextFormat(0xCCFF66)]));
+                            }
+                        }, [material, social]);
+                    }
+                }
+            }
+        }
     }
 
     private function createStreets() : Void
