@@ -33,7 +33,7 @@
 == 0.5 =====================================
 
 + streets: buy weapon
-  streets: find gangsters
++ streets: form a gang
   streets: rob business
   card: wanted by police
   right panel: cards
