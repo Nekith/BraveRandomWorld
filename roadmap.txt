@@ -51,8 +51,8 @@ x events: beat enemies up
 x events: run from enemies
 x social faction: police blank slate
 x generate apartment location
-  apartment: throw party
-  apartment: wealth indicator
+x apartment: throw party
+x streets: chaos indicator
 
 == 0.8 =====================================
 
@@ -73,7 +73,7 @@ x generate apartment location
 == 0.10 ====================================
 
   end condition: X in main resource
-  streets: chaos indicator
+  apartment: wealth indicator
   end condition: chaos too high
   material elysium: call favors
   buttons style

@@ -90,6 +90,14 @@ class LocationState extends WindowState
         addText([""]);
         addText(["The streets."]);
         addText(["It's moisty, it's dirty and there's a lot of people."]);
+        addText([""]);
+        var str : String = "There's not a lot of law enforcers outside.";
+        if (Reg.cards.get("chaos") >= 12) {
+            str = "There are cops everywhere.";
+        } else if (Reg.cards.get("chaos") >= 5) {
+            str = "There are some police patrol. They seem to occur more often.";
+        }
+        addText([str]);
         for (location in Reg.locations) {
             if (location.nature == LocationNature.Streets || location.known == false) {
                 continue;
