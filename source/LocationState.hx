@@ -60,6 +60,21 @@ class LocationState extends WindowState
             }
             addChoiceWithArg("Go to " + location.name(), move, location);
         }
+        if (Reg.cards.exists("weapon") == false || Reg.cards.get("weapon") == 0) {
+            var resource : Resource = null;
+            for (i in 0...Reg.resources.length) {
+                if (Reg.resources[i].nature == ResourceNature.Material) {
+                    resource = Reg.resources[i];
+                }
+            }
+            addChoice("Buy weapon for 5 " + resource.name, function() {
+                if (resource.quantity >= 5) {
+                    resource.quantity -= 5;
+                    Reg.cards.set("weapon", 1);
+                    FlxG.switchState(new LocationState(["You get yourself a weapon. Big guy."], [new FlxTextFormat(0xCCFF66)]));
+                }
+            });
+        }
     }
 
     private function createMaterialElysium() : Void
