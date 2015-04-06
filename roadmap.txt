@@ -28,7 +28,7 @@
 + generate social factions high-life bar
 + social elysium: become member
 + right panel: status
-  social elysium: make donation
++ social elysium: make donation
 
 == 0.5 =====================================
 

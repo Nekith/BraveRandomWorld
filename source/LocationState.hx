@@ -113,6 +113,12 @@ class LocationState extends WindowState
                     FlxG.switchState(new LocationState([Generator.memberComment()], [new FlxTextFormat(0xCCFF66)]));
                 }
             });
+        } else if (faction.reputation == FactionReputation.Friendly || faction.reputation == FactionReputation.Exalted) {
+            addChoice("Make a donation (2 " + faction.need.name + " for 2 " + faction.resource.name + ")", function() {
+                if (faction.makeDonation() == true) {
+                    FlxG.switchState(new LocationState([Generator.donationComment()], [new FlxTextFormat(0xCCFF66)]));
+                }
+            });
         }
     }
 

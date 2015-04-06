@@ -27,4 +27,14 @@ class SocialFaction extends Faction
     {
         return 4;
     }
+
+    public function makeDonation() : Bool
+    {
+        if ((reputation == FactionReputation.Friendly || reputation == FactionReputation.Exalted) && need.quantity >= 2) {
+            need.quantity -= 2;
+            resource.quantity += 2;
+            return true;
+        }
+        return false;
+    }
 }

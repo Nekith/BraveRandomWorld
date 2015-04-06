@@ -44,6 +44,11 @@ class Generator
         return members[FlxRandom.intRanged(0, members.length - 1)];
     }
 
+    static public function donationComment() : String
+    {
+        return donations[FlxRandom.intRanged(0, donations.length - 1)];
+    }
+
     static private var syllabus : Array<String> = [
         "ba", "bi", "bo", "bu",
         "ca", "ce", "ci", "co", "chi",
@@ -92,5 +97,13 @@ class Generator
         "You deserve this. Congratulations! To life!",
         "The family is expanding. Welcome, partner.",
         "Make us proud, go earn some prestige in our name."
+    ];
+
+    static private var donations : Array<String> = [
+        "Thank you for your generous donation.",
+        "That's great, partner. Thanks.",
+        "I don't know if it's plain generosity or a move but thank you.",
+        "I will make sure everybody knows what you just did. Thank you.",
+        "That's a start. Gratitude.",
     ];
 }
