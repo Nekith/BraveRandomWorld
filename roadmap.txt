@@ -43,7 +43,7 @@ x right panel: cards
 x add chaos counter
 x streets: random police check events
 x events: mind blast enemies
-  events: stab enemies
+x events: stab enemies
   events: beat enemies up
 
 == 0.7 =====================================

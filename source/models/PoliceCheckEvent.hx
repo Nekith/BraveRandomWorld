@@ -25,6 +25,12 @@ class PoliceCheckEvent extends RandomEvent
                 });
             }
         }
+        if (Reg.cards.exists("weapon") == true && Reg.cards.get("weapon") >= 1) {
+            choices.push({
+                label: "Stab them",
+                action: stab
+            });
+        }
         /*choices.push({
             label: "Try to run",
             action: run
@@ -36,6 +42,16 @@ class PoliceCheckEvent extends RandomEvent
         if (resource.quantity >= 2) {
             resource.quantity -= 2;
             Reg.cards.set("wanted", Reg.cards.get("wanted") - 1);
+            Reg.event = null;
+            FlxG.switchState(new LocationState());
+        }
+    }
+
+    public function stab(resource : Resource) : Void
+    {
+        if (Reg.cards.exists("weapon") == true && Reg.cards.get("weapon") >= 1) {
+            Reg.cards.set("chaos", Reg.cards.get("chaos") + 1);
+            Reg.cards.set("wanted", Reg.cards.get("wanted") + 1);
             Reg.event = null;
             FlxG.switchState(new LocationState());
         }

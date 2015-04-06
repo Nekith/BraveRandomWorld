@@ -22,7 +22,11 @@ class EventState extends WindowState
                 addText(Reg.event.strings[i], Reg.event.formats[i]);
             }
             for (choice in Reg.event.choices) {
-                addChoiceWithArg(choice.label, choice.action, choice.arg);
+                if (choice.arg != null) {
+                    addChoiceWithArg(choice.label, choice.action, choice.arg);
+                } else {
+                    addChoiceWithArg(choice.label, choice.action, null);
+                }
             }
             if (flashStrings != null) {
                 addText([""]);
