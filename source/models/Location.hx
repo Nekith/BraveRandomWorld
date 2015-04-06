@@ -13,7 +13,7 @@ enum LocationNature
 class Location
 {
     public var nature(default, null) : LocationNature;
-    public var known(default, null) : Bool;
+    public var known(default, default) : Bool;
     public var faction(default, null) : Faction;
 
     public function new(nature : LocationNature, known : Bool, ?faction : Faction)

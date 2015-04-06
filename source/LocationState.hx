@@ -96,7 +96,7 @@ class LocationState extends WindowState
         if (Reg.cards.exists("low-life contacts") == false || Reg.cards.get("young people contact") <= 1) {
             for (resource in Reg.resources) {
                 if (resource.nature == ResourceNature.Material) {
-                    addChoiceWithArg("Find low-life young contacts for 2 " + resource.name, function(material : Resource) {
+                    addChoiceWithArg("Find young low-life contacts for 2 " + resource.name, function(material : Resource) {
                         if (material.quantity >= 2) {
                             material.quantity -= 2;
                             Reg.cards.set("low-life contacts", FlxRandom.intRanged(2, 4));
@@ -115,7 +115,7 @@ class LocationState extends WindowState
         addText(["The streets."]);
         addText(["It's moisty, it's dirty and there's a lot of people."]);
         addText([""]);
-        var str : String = "There's not a lot of law enforcers outside.";
+        var str : String = "There's not a lot of law enforcers out there.";
         if (Reg.cards.get("chaos") >= 12) {
             str = "There are cops everywhere.";
         } else if (Reg.cards.get("chaos") >= 5) {
@@ -259,6 +259,15 @@ class LocationState extends WindowState
         addText(["A hangout spot."]);
         addText(["It's sultry, it's classy and there's a lot of people."]);
         var faction : SocialFaction = cast(Reg.location.faction, SocialFaction);
+        if (Reg.cards.exists("companion") == false || Reg.cards.get("companion") <= 0) {
+            addChoice("Find young beautiful companion for 3 " + Reg.location.faction.resource.name, function() {
+                if (Reg.location.faction.resource.quantity >= 3) {
+                    Reg.location.faction.resource.quantity -= 3;
+                    Reg.cards.set("companion", 1);
+                    FlxG.switchState(new LocationState(["An objectively beautiful specimen in our race is rare, furthermore single. But I've found one."], [new FlxTextFormat(0xCCFF66)]));
+                }
+            });
+        }
     }
 
     public function move(location : Location)

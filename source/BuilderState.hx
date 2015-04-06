@@ -150,7 +150,9 @@ class BuilderState extends FlxState
                 Reg.locations.push(new Location(LocationNature.Elysium, true, faction));
             } else if (faction.resource.nature == ResourceNature.Social) {
                 Reg.locations.push(new Location(LocationNature.Elysium, true, faction));
-                Reg.locations.push(new Location(LocationNature.Playground, false, faction));
+                var playground : Location = new Location(LocationNature.Playground, false, faction);
+                Reg.locations.push(playground);
+                cast(faction, SocialFaction).playground = playground;
             }
         }
     }

@@ -1,11 +1,14 @@
 package models;
 
 import models.Faction;
+import models.Location;
 import models.Resource;
 
+@:allow(BuilderState)
 class SocialFaction extends Faction
 {
     public var need(default, null) : Resource;
+    public var playground(default, null) : Location;
 
     public function new(name : String, resource : Resource, need : Resource)
     {
@@ -18,6 +21,7 @@ class SocialFaction extends Faction
         if (reputation == FactionReputation.Neutral && need.quantity >= membershipCost()) {
             need.quantity -= membershipCost();
             reputation = FactionReputation.Friendly;
+            playground.known = true;
             return true;
         }
         return false;
