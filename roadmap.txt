@@ -56,7 +56,7 @@ x streets: chaos indicator
 
 == 0.8 =====================================
 
-  generate low-life bar location
+x generate low-life bar location
   low-life: find young resource-less people
   streets: find dealer
   high-life: find young beautiful companion

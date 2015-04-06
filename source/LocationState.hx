@@ -38,6 +38,8 @@ class LocationState extends WindowState
                 } else if (Reg.location.faction.resource.nature == ResourceNature.Social) {
                     createSocialElysium();
                 }
+            } else if (Reg.location.nature == LocationNature.Lowlife) {
+                createLowlife();
             } else if (Reg.location.nature == LocationNature.Playground) {
                 addText(["You're in the Playground of the ", Reg.location.faction.name, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
                 addText([""]);
@@ -82,6 +84,14 @@ class LocationState extends WindowState
                 }
             }
         }
+    }
+
+    private function createLowlife() : Void
+    {
+        addText(["You're in the Lower Afterlife bar."]);
+        addText([""]);
+        addText(["A low-life hangout place."]);
+        addText(["It's hot, it's messy and there's a lot of people."]);
     }
 
     private function createStreets() : Void
@@ -221,7 +231,7 @@ class LocationState extends WindowState
     private function createSocialPlayground() : Void
     {
         addText(["A hangout spot."]);
-        addText(["It's hot, it's classy and there's a lot of people."]);
+        addText(["It's sultry, it's classy and there's a lot of people."]);
         var faction : SocialFaction = cast(Reg.location.faction, SocialFaction);
     }
 

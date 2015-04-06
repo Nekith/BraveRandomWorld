@@ -4,6 +4,7 @@ enum LocationNature
 {
     Apartments;
     Elysium;
+    Lowlife;
     Playground;
     Streets;
 }
