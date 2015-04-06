@@ -9,7 +9,7 @@
 == 0.2 =====================================
 
 + generate material factions
-+ generate material factions locations
++ generate material factions elysium
 + generate street location
 + move between known locations
 + material elysium: resource loan
@@ -17,7 +17,7 @@
 == 0.3 =====================================
 
 + associate cults with resources
-+ generate cults locations
++ generate cults elysium
 + cult elysium: get initiated
 + material elysium: trade material resources
 + generate social factions
@@ -27,7 +27,7 @@
 + generate social factions elysium
 + generate social factions high-life bar
 + social elysium: become member
-  right panel: status
++ right panel: status
   social elysium: make donation
 
 == 0.5 =====================================
@@ -40,7 +40,7 @@
 
 == 0.6 =====================================
 
-  chaos counter
+  add chaos counter
   streets: random police check events
   events: mind blast enemies
   events: stab enemies
@@ -68,7 +68,7 @@
   apartment: call companion to offer apparel (add spiritual)
   high-life: call companion (cost material, add social)
   apartment: call companion to consume
--
+  background color
 
 == 0.10 ====================================
 
@@ -80,7 +80,7 @@
 
 == 0.11 ====================================
 
-  self-esteem
+  add self-esteem
   low-life: sell yourself
   high-life: sell yourself
   end condition: self-esteem too low
@@ -96,11 +96,12 @@
 
 ? ethny status effects
 ? cult status effects
+? resistance quest
 
-== Summary =================================
+== Reputation ==============================
 
 cult:
-  friendly: get initiated (material)
+  friendly: get initiated
   exalted: enlight them (spiritual)
 
 material faction:
@@ -108,23 +109,27 @@ material faction:
   exalted:
 
 social faction:
-  friendly: become member (material)
+  friendly: become member
   exalted: persuade them (spiritual)
 
-gain material:
+== Resources ===============================
+
+material:
   loan
   rob business
   trade material resources
 
-gain spiritual:
+spiritual:
   drugs and young resource-less
   companion quest
   ?
 
-gain social:
+social:
   throw party
   make donation
   ?
+
+== Others ==================================
 
 end conditions:
   X in main resource

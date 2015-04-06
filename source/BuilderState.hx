@@ -80,7 +80,7 @@ class BuilderState extends FlxState
         }
         Reg.resources = FlxRandom.shuffleArray(Reg.resources, 2);
         Reg.resources[0].isMajor = true;
-        Reg.resources[0].quantity = -5;
+        Reg.resources[0].quantity = 0;
         Reg.resources[1].quantity = 0;
     }
 
@@ -130,7 +130,7 @@ class BuilderState extends FlxState
             if (FlxRandom.int() % 2 == 0) {
                 cults[0].status = CultStatus.Official;
             }
-            if (FlxRandom.int() % 2 == 0) {
+            if (FlxRandom.int() % 3 != 0) {
                 Reg.cult = cults[FlxRandom.intRanged(0, cults.length - 1)];
                 Reg.cult.reputation = FactionReputation.Friendly;
             }

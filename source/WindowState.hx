@@ -8,6 +8,7 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 import flixel.addons.ui.FlxButtonPlus;
+import models.Resource;
 
 class WindowState extends FlxState
 {
@@ -30,6 +31,16 @@ class WindowState extends FlxState
 		textCounter = 5.0;
 		choiceCounter = 0.0;
 		super.create();
+	}
+
+	private function displayRightPanel() : Void
+	{
+		for (i in 0...Reg.resources.length) {
+			var resource : Resource = Reg.resources[i];
+			var text : FlxText = new FlxText(width + 10.0, 5.0 + 20.0 * i, Lib.current.stage.stageWidth - 210.0, resource.name + ": " + resource.quantity, 12);
+			text.addFormat(Resource.formatForNature(resource.nature));
+			add(text);
+		}
 	}
 
 	private function addText(strings : Array<String>, ?formats : Array<FlxTextFormat>) : FlxText

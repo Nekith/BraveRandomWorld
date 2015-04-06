@@ -20,6 +20,7 @@ class LocationState extends WindowState
     override public function create() : Void
     {
         super.create();
+        displayRightPanel();
         if (Reg.location.nature == LocationNature.Streets) {
             createStreets();
         } else if (Reg.location.nature == LocationNature.Elysium) {
