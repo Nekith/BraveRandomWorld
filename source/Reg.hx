@@ -6,6 +6,7 @@ import models.Ethny;
 import models.Faction;
 import models.Gender;
 import models.Location;
+import models.RandomEvent;
 import models.Resource;
 
 class Reg
@@ -21,9 +22,7 @@ class Reg
 
     public static var cards : Map<String, Int> = ["chaos" => 0];
     public static var location : Location;
-
-	// @TODO
-	public static var save : FlxSave;
+    public static var event : RandomEvent;
 
     public static function clear() : Void
     {

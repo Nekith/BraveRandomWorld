@@ -12,6 +12,7 @@ import models.EnumStringer;
 import models.Faction;
 import models.Location;
 import models.MaterialFaction;
+import models.PoliceCheckEvent;
 import models.Resource;
 import models.SocialFaction;
 
@@ -20,31 +21,40 @@ class LocationState extends WindowState
     override public function create() : Void
     {
         super.create();
-        displayRightPanel();
-        if (Reg.location.nature == LocationNature.Streets) {
-            createStreets();
-        } else if (Reg.location.nature == LocationNature.Elysium) {
-            addText(["You're in the Elysium of the ", Reg.location.faction.name, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
-            addText([""]);
-            addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
-            if (Reg.location.faction.resource.nature == ResourceNature.Material) {
-                createMaterialElysium();
-            } else if (Reg.location.faction.resource.nature == ResourceNature.Spiritual) {
-                createCultElysium();
-            } else if (Reg.location.faction.resource.nature == ResourceNature.Social) {
-                createSocialElysium();
+        if (Reg.event != null) {
+            FlxG.switchState(new EventState());
+        } else {
+            displayRightPanel();
+            if (Reg.location.nature == LocationNature.Streets) {
+                if (FlxRandom.intRanged(0, 100) < Reg.cards.get("chaos") * 5) {
+                    Reg.event = new PoliceCheckEvent();
+                    FlxG.switchState(new EventState());
+                } else {
+                    createStreets();
+                }
+            } else if (Reg.location.nature == LocationNature.Elysium) {
+                addText(["You're in the Elysium of the ", Reg.location.faction.name, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
+                addText([""]);
+                addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
+                if (Reg.location.faction.resource.nature == ResourceNature.Material) {
+                    createMaterialElysium();
+                } else if (Reg.location.faction.resource.nature == ResourceNature.Spiritual) {
+                    createCultElysium();
+                } else if (Reg.location.faction.resource.nature == ResourceNature.Social) {
+                    createSocialElysium();
+                }
+            } else if (Reg.location.nature == LocationNature.Playground) {
+                addText(["You're in the Playground of the ", Reg.location.faction.name, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
+                addText([""]);
+                addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
+                if (Reg.location.faction.resource.nature == ResourceNature.Social) {
+                    createSocialPlayground();
+                }
             }
-        } else if (Reg.location.nature == LocationNature.Playground) {
-            addText(["You're in the Playground of the ", Reg.location.faction.name, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
-            addText([""]);
-            addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
-            if (Reg.location.faction.resource.nature == ResourceNature.Social) {
-                createSocialPlayground();
+            if (flashStrings != null) {
+                addText([""]);
+                addText(flashStrings, flashFormats);
             }
-        }
-        if (flashStrings != null) {
-            addText([""]);
-            addText(flashStrings, flashFormats);
         }
     }
 
@@ -104,6 +114,7 @@ class LocationState extends WindowState
                     Reg.cards.set("wanted", 1);
                 }
                 Reg.cards.set("gang", Math.round(Math.max(0.0, Reg.cards.get("gang") - lost)));
+                Reg.cards.set("chaos", Reg.cards.get("chaos") + 1);
                 FlxG.switchState(new LocationState(["You've robbed a business, gained " + Std.string(amount) + " " + res.name + " and lost " + lostStr + "."],
                     [new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), Resource.formatForNature(res.nature), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66)]));
             });
