@@ -141,6 +141,7 @@ class BuilderState extends FlxState
     private function generateLocations() : Void
     {
         Reg.locations.push(new Location(LocationNature.Streets, true));
+        Reg.locations.push(new Location(LocationNature.Apartments, true));
         for (faction in Reg.factions) {
             if (faction.resource.nature == ResourceNature.Material) {
                 Reg.locations.push(new Location(LocationNature.Elysium, true, faction));

@@ -2,9 +2,10 @@ package models;
 
 enum LocationNature
 {
-    Streets;
+    Apartments;
     Elysium;
     Playground;
+    Streets;
 }
 
 @:allow(BuilderState)

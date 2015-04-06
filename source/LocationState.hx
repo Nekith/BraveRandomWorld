@@ -25,13 +25,8 @@ class LocationState extends WindowState
             FlxG.switchState(new EventState());
         } else {
             displayRightPanel();
-            if (Reg.location.nature == LocationNature.Streets) {
-                if (FlxRandom.intRanged(1, 100) <= Reg.cards.get("wanted") * 5) {
-                    Reg.event = new PoliceCheckEvent();
-                    FlxG.switchState(new EventState());
-                } else {
-                    createStreets();
-                }
+            if (Reg.location.nature == LocationNature.Apartments) {
+                createApartments();
             } else if (Reg.location.nature == LocationNature.Elysium) {
                 addText(["You're in the Elysium of the ", Reg.location.faction.name, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
                 addText([""]);
@@ -50,12 +45,28 @@ class LocationState extends WindowState
                 if (Reg.location.faction.resource.nature == ResourceNature.Social) {
                     createSocialPlayground();
                 }
+            } else {
+                if (FlxRandom.intRanged(1, 100) <= Reg.cards.get("wanted") * 5) {
+                    Reg.event = new PoliceCheckEvent();
+                    FlxG.switchState(new EventState());
+                } else {
+                    createStreets();
+                }
             }
             if (flashStrings != null) {
                 addText([""]);
                 addText(flashStrings, flashFormats);
             }
         }
+    }
+
+    private function createApartments() : Void
+    {
+        addText(["You're in your apartments."]);
+        addText([""]);
+        addText(["Your private home."]);
+        addText(["It's comfortable, it's impersonal and there's nobody. Except you."]);
+        addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
     }
 
     private function createStreets() : Void

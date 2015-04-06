@@ -44,7 +44,9 @@ class EnumStringer
     public static function locationNature(n : LocationNature) : String
     {
         var str : String = "the streets";
-        if (n == LocationNature.Elysium) {
+        if (n == LocationNature.Apartments) {
+            str = "your Apartments";
+        } else if (n == LocationNature.Elysium) {
             str = "Elysium";
         } else if (n == LocationNature.Playground) {
             str = "Playground";
