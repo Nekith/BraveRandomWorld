@@ -48,7 +48,7 @@
 x background color
 x buttons style
 x streets: buy nice apparel
-  apartment: call companion to offer apparel (add spiritual)
+x apartment: call companion to offer apparel
   playground: call companion (cost material, add social)
 
 == 0.8 =====================================
@@ -152,7 +152,7 @@ x make donation
 
 x playground: find young beautiful companion
 x streets: buy nice apparel
-  apartment: call companion to offer apparel
+x apartment: call companion to offer apparel
   playground: call companion
   apartment: call companion to drain
 

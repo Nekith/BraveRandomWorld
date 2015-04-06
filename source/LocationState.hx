@@ -97,6 +97,17 @@ class LocationState extends WindowState
                 }
             }
         }
+        if (Reg.cards.exists("companion") == true && Reg.cards.get("companion") == 2) {
+            addChoice("Offer the clothing to your companion", function() {
+                Reg.cards.set("companion", 3);
+                for (resource in Reg.resources) {
+                    if (resource.nature == ResourceNature.Spiritual) {
+                        resource.quantity += FlxRandom.intRanged(1, 2);
+                    }
+                }
+                FlxG.switchState(new LocationState(["It's starting to be juicy. I now need to show my treasure to the world."], [new FlxTextFormat(0xCCFF66)]));
+            });
+        }
     }
 
     private function createLowlife() : Void
@@ -201,7 +212,7 @@ class LocationState extends WindowState
                         if (material.quantity >= 1) {
                             material.quantity -= 1;
                             Reg.cards.set("companion", 2);
-                            FlxG.switchState(new LocationState(["It's not cheap for what it is but it's gonna worth it. Soon."], [new FlxTextFormat(0xCCFF66)]));
+                            FlxG.switchState(new LocationState(["It's not cheap for what it is but it's gonna worth it. Soon. In the mean time, I need to offer this."], [new FlxTextFormat(0xCCFF66)]));
                         }
                     }, resource);
                 }
@@ -286,7 +297,7 @@ class LocationState extends WindowState
                 if (Reg.location.faction.resource.quantity >= 3) {
                     Reg.location.faction.resource.quantity -= 3;
                     Reg.cards.set("companion", 1);
-                    FlxG.switchState(new LocationState(["An objectively beautiful specimen in our race is rare, furthermore single. But I've found one."], [new FlxTextFormat(0xCCFF66)]));
+                    FlxG.switchState(new LocationState(["An objectively beautiful specimen in our race is rare, furthermore single. But I've found one, who needs a nice attire."], [new FlxTextFormat(0xCCFF66)]));
                 }
             });
         }
