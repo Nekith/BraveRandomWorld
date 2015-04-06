@@ -35,7 +35,7 @@
 + streets: buy weapon
 + streets: form a gang
 + streets: rob business
-  card: wanted by police
++ card: wanted by police
   right panel: cards
 
 == 0.6 =====================================
