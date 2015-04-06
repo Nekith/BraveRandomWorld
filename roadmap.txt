@@ -44,11 +44,11 @@ x add chaos counter
 x streets: random police check events
 x events: mind blast enemies
 x events: stab enemies
-  events: beat enemies up
+x events: beat enemies up
 
 == 0.7 =====================================
 
-  events: escape enemies
+  events: run from enemies
   social faction: police blank slate
   generate apartment location
   apartment: throw party

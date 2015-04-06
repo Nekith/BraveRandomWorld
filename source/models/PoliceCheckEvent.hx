@@ -2,6 +2,7 @@ package models;
 
 import flixel.FlxG;
 import flixel.text.FlxText;
+import flixel.util.FlxRandom;
 import models.Resource;
 
 class PoliceCheckEvent extends RandomEvent
@@ -31,6 +32,10 @@ class PoliceCheckEvent extends RandomEvent
                 action: stab
             });
         }
+        choices.push({
+            label: "Beat 'em up",
+            action: beat
+        });
         /*choices.push({
             label: "Try to run",
             action: run
@@ -57,7 +62,24 @@ class PoliceCheckEvent extends RandomEvent
         }
     }
 
-    public function run() : Void
+    public function beat(resource : Resource) : Void
     {
+        if (FlxRandom.int() % 3 != 0) {
+            Reg.cards.set("wanted", Reg.cards.get("wanted") + 1);
+            Reg.event = null;
+            FlxG.switchState(new LocationState());
+        } else {
+            // oops
+        }
+    }
+
+    public function run(resource : Resource) : Void
+    {
+        if (FlxRandom.int() % 2 == 0) {
+            Reg.event = null;
+            FlxG.switchState(new LocationState());
+        } else {
+            // oops
+        }
     }
 }
