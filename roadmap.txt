@@ -57,7 +57,7 @@ x streets: chaos indicator
 == 0.8 =====================================
 
 x generate low-life bar location
-  low-life: find young resource-less people
+x low-life: find young resource-less people
   streets: find dealer
   high-life: find young beautiful companion
   apartment: drugs and young resource-less
@@ -92,10 +92,18 @@ x generate low-life bar location
   generate dominant gender
   generate other gender status
   sexism effects
+  cult elysium: enlight them (add all social)
+
+== 0.13 ====================================
+
+  ethny status effect on random check
+  ethny status effect on membership
+  cult status effect on enlightment
+  cult status effect on initiation
 ?
 
-? ethny status effects
-? cult status effects
+== 0.14 ====================================
+
 ? resistance quest
 
 == Reputation ==============================
@@ -118,6 +126,7 @@ material:
   loan
   rob business
   trade material resources
+  sell yourself
 
 spiritual:
   drugs and young resource-less

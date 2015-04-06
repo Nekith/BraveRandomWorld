@@ -92,6 +92,19 @@ class LocationState extends WindowState
         addText([""]);
         addText(["A low-life hangout place."]);
         addText(["It's hot, it's messy and there's a lot of people."]);
+        if (Reg.cards.exists("low-life contacts") == false || Reg.cards.get("young people contact") <= 1) {
+            for (resource in Reg.resources) {
+                if (resource.nature == ResourceNature.Material) {
+                    addChoiceWithArg("Find low-life young contacts for 2 " + resource.name, function(material : Resource) {
+                        if (material.quantity >= 2) {
+                            material.quantity -= 2;
+                            Reg.cards.set("low-life contacts", FlxRandom.intRanged(2, 4));
+                            FlxG.switchState(new LocationState(["You found half of your entertainment. I guess we'll go to the apartments."], [new FlxTextFormat(0xCCFF66)]));
+                        }
+                    }, resource);
+                }
+            }
+        }
     }
 
     private function createStreets() : Void
@@ -131,7 +144,7 @@ class LocationState extends WindowState
                 addChoiceWithArg("Form a gang for 5 " + Reg.resources[i].name, function(resource : Resource) {
                     if (resource.quantity >= 5) {
                         resource.quantity -= 5;
-                        Reg.cards.set("gang", 5);
+                        Reg.cards.set("gang", FlxRandom.intRanged(4, 6));
                         FlxG.switchState(new LocationState(["Found a few guys. They seem ready to do a lot of things."], [new FlxTextFormat(0xCCFF66)]));
                     }
                 }, Reg.resources[i]);
