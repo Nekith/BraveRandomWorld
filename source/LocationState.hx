@@ -92,6 +92,7 @@ class LocationState extends WindowState
         addText([""]);
         addText(["A low-life hangout place."]);
         addText(["It's hot, it's messy and there's a lot of people."]);
+        addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
         if (Reg.cards.exists("low-life contacts") == false || Reg.cards.get("young people contact") <= 1) {
             for (resource in Reg.resources) {
                 if (resource.nature == ResourceNature.Material) {
@@ -99,7 +100,7 @@ class LocationState extends WindowState
                         if (material.quantity >= 2) {
                             material.quantity -= 2;
                             Reg.cards.set("low-life contacts", FlxRandom.intRanged(2, 4));
-                            FlxG.switchState(new LocationState(["You found half of your entertainment. I guess we'll go to the apartments."], [new FlxTextFormat(0xCCFF66)]));
+                            FlxG.switchState(new LocationState(["Now I need something to boost them. Then, the apartments."], [new FlxTextFormat(0xCCFF66)]));
                         }
                     }, resource);
                 }
@@ -171,6 +172,18 @@ class LocationState extends WindowState
                 FlxG.switchState(new LocationState(["You've robbed a business, gained " + Std.string(amount) + " " + res.name + " and lost " + lostStr + "."],
                     [new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), Resource.formatForNature(res.nature), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66)]));
             });
+        }
+        for (resource in Reg.resources) {
+            if (resource.nature == ResourceNature.Material) {
+                addChoiceWithArg("Buy some drugs for 1 " + resource.name, function(material : Resource) {
+                    if (material.quantity >= 1) {
+                        material.quantity -= 1;
+                        var drugs : Int = (Reg.cards.exists("drugs") ? Reg.cards.get("drugs") + 1 : 1);
+                        Reg.cards.set("drugs", drugs);
+                        FlxG.switchState(new LocationState(["I just bought some drugs. Stimulus for weak minds."], [new FlxTextFormat(0xCCFF66)]));
+                    }
+                }, resource);
+            }
         }
     }
 

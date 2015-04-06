@@ -58,7 +58,7 @@ x streets: chaos indicator
 
 x generate low-life bar location
 x low-life: find young resource-less people
-  streets: find dealer
+x streets: buy drugs
   high-life: find young beautiful companion
   apartment: drugs and young resource-less
 
