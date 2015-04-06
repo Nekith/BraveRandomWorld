@@ -26,7 +26,7 @@ class LocationState extends WindowState
         } else {
             displayRightPanel();
             if (Reg.location.nature == LocationNature.Streets) {
-                if (FlxRandom.intRanged(1, 100) <= Reg.cards.get("wanted") * 50) {
+                if (FlxRandom.intRanged(1, 100) <= Reg.cards.get("wanted") * 5) {
                     Reg.event = new PoliceCheckEvent();
                     FlxG.switchState(new EventState());
                 } else {
@@ -172,6 +172,13 @@ class LocationState extends WindowState
             addChoice("Make a donation (2 " + faction.need.name + " for 2 " + faction.resource.name + ")", function() {
                 if (faction.makeDonation() == true) {
                     FlxG.switchState(new LocationState([Generator.donationComment()], [new FlxTextFormat(0xCCFF66)]));
+                }
+            });
+            addChoice("Erase your police slate for 4 " + faction.resource.name, function() {
+                if (faction.resource.quantity >= 4) {
+                    faction.resource.quantity -= 4;
+                    Reg.cards.set("wanted", 0);
+                    FlxG.switchState(new LocationState(["It's done. Don't get too cocky."], [new FlxTextFormat(0xCCFF66)]));
                 }
             });
         }

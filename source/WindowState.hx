@@ -88,6 +88,6 @@ class WindowState extends FlxState
 	}
 
 	static private var displayedCards : Array<String> = [
-		"gang", "weapon",
+		"gang", "wanted", "weapon",
 	];
 }
