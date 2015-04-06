@@ -24,7 +24,7 @@
   social elysium: seduce them
   cult elysium: enlight them (add all spiritual)
   add sprawl location
-  rework streets / sprawl
+  rework streets / sprawl (downtown)
 ?
 
 == 0.11 ====================================
@@ -46,8 +46,8 @@
 == 0.9 =====================================
 
 x background color
-  buttons style
-  streets: buy nice apparel (cost material)
+x buttons style
+x streets: buy nice apparel
   apartment: call companion to offer apparel (add spiritual)
   playground: call companion (cost material, add social)
 
@@ -151,7 +151,7 @@ x make donation
 == Companion Quest =========================
 
 x playground: find young beautiful companion
-  streets: buy nice apparel
+x streets: buy nice apparel
   apartment: call companion to offer apparel
   playground: call companion
   apartment: call companion to drain

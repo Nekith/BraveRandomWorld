@@ -196,6 +196,15 @@ class LocationState extends WindowState
                         FlxG.switchState(new LocationState(["I just bought some drugs. Stimulus for weak minds."], [new FlxTextFormat(0xCCFF66)]));
                     }
                 }, resource);
+                if (Reg.cards.exists("companion") == true && Reg.cards.get("companion") == 1) {
+                    addChoiceWithArg("Buy nice apparel for 1 " + resource.name, function(material : Resource) {
+                        if (material.quantity >= 1) {
+                            material.quantity -= 1;
+                            Reg.cards.set("companion", 2);
+                            FlxG.switchState(new LocationState(["It's not cheap for what it is but it's gonna worth it. Soon."], [new FlxTextFormat(0xCCFF66)]));
+                        }
+                    }, resource);
+                }
             }
         }
     }
@@ -207,7 +216,7 @@ class LocationState extends WindowState
         var faction : MaterialFaction = cast(Reg.location.faction, MaterialFaction);
         if (faction.loan <= 0) {
             var amount : String = Std.string(faction.loanAmount());
-            addChoice("Make a loan of " + amount + " " + faction.resource.name + " (20% flat interest)", function() {
+            addChoice("Make a loan of " + amount + " " + faction.resource.name + " (20% interest)", function() {
                 if (faction.makeLoan() == true) {
                     FlxG.switchState(new LocationState(["Your loan is effective. Don't forget to repay it."], [new FlxTextFormat(0xCCFF66)]));
                 }
@@ -273,7 +282,7 @@ class LocationState extends WindowState
         addText(["It's sultry, it's classy and there's a lot of people."]);
         var faction : SocialFaction = cast(Reg.location.faction, SocialFaction);
         if (Reg.cards.exists("companion") == false || Reg.cards.get("companion") <= 0) {
-            addChoice("Find young beautiful companion for 3 " + Reg.location.faction.resource.name, function() {
+            addChoice("Find a beautiful companion for 3 " + Reg.location.faction.resource.name, function() {
                 if (Reg.location.faction.resource.quantity >= 3) {
                     Reg.location.faction.resource.quantity -= 3;
                     Reg.cards.set("companion", 1);
