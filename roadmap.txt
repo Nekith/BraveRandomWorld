@@ -1,57 +1,57 @@
 == 0.1 =====================================
 
-+ generate resources
-+ generate ethnies
-+ generate cults
-+ generate character
-+ summary screen
+x generate resources
+x generate ethnies
+x generate cults
+x generate character
+x summary screen
 
 == 0.2 =====================================
 
-+ generate material factions
-+ generate material factions elysium
-+ generate street location
-+ move between known locations
-+ material elysium: resource loan
+x generate material factions
+x generate material factions elysium
+x generate street location
+x move between known locations
+x material elysium: resource loan
 
 == 0.3 =====================================
 
-+ associate cults with resources
-+ generate cults elysium
-+ cult elysium: get initiated
-+ material elysium: trade material resources
-+ generate social factions
+x associate cults with resources
+x generate cults elysium
+x cult elysium: get initiated
+x material elysium: trade material resources
+x generate social factions
 
 == 0.4 =====================================
 
-+ generate social factions elysium
-+ generate social factions high-life bar
-+ social elysium: become member
-+ right panel: status
-+ social elysium: make donation
+x generate social factions elysium
+x generate social factions high-life bar
+x social elysium: become member
+x right panel: status
+x social elysium: make donation
 
 == 0.5 =====================================
 
-+ streets: buy weapon
-+ streets: form a gang
-+ streets: rob business
-+ card: wanted by police
-+ right panel: cards
+x streets: buy weapon
+x streets: form a gang
+x streets: rob business
+x card: wanted by police
+x right panel: cards
 
 == 0.6 =====================================
 
-+ add chaos counter
-+ streets: random police check events
-  events: mind blast enemies
+x add chaos counter
+x streets: random police check events
+x events: mind blast enemies
   events: stab enemies
   events: beat enemies up
 
 == 0.7 =====================================
 
+  events: escape enemies
   social faction: police blank slate
   generate apartment location
   apartment: throw party
-  social elysium: persuade them
   apartment: wealth indicator
 
 == 0.8 =====================================
@@ -88,10 +88,10 @@
 
 == 0.12 ====================================
 
+  social elysium: persuade them
   generate dominant gender
   generate other gender status
   sexism effects
-?
 ?
 
 ? ethny status effects
@@ -122,12 +122,10 @@ material:
 spiritual:
   drugs and young resource-less
   companion quest
-  ?
 
 social:
   throw party
   make donation
-  ?
 
 == Others ==================================
 

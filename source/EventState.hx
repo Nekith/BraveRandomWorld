@@ -17,8 +17,12 @@ class EventState extends WindowState
         if (Reg.event == null) {
             FlxG.switchState(new LocationState());
         } else {
+            displayRightPanel();
             for (i in 0...Reg.event.strings.length) {
                 addText(Reg.event.strings[i], Reg.event.formats[i]);
+            }
+            for (choice in Reg.event.choices) {
+                addChoiceWithArg(choice.label, choice.action, choice.arg);
             }
             if (flashStrings != null) {
                 addText([""]);

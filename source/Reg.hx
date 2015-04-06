@@ -20,7 +20,7 @@ class Reg
 	public static var ethny : Ethny;
 	public static var cult : Cult;
 
-    public static var cards : Map<String, Int> = ["chaos" => 0];
+    public static var cards : Map<String, Int> = ["chaos" => 0, "wanted" => 0];
     public static var location : Location;
     public static var event : RandomEvent;
 
@@ -33,7 +33,7 @@ class Reg
         Reg.gender = null;
         Reg.ethny = null;
         Reg.cult = null;
-        Reg.cards = ["chaos" => 0];
+        Reg.cards = ["chaos" => 0, "wanted" => 0];
         Reg.location = null;
     }
 }

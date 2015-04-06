@@ -28,6 +28,7 @@ class BuilderState extends FlxState
         add(new FlxText(x - 130.0, y - 45.0, 130.0, "Generating...", 12));
         bar = new FlxBar(x - 130.0, y - 25.0, FlxBar.FILL_LEFT_TO_RIGHT, 125, 20);
         add(bar);
+        Reg.clear();
         super.create();
     }
 
