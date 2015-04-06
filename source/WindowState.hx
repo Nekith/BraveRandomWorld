@@ -7,7 +7,7 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
-import flixel.addons.ui.FlxButtonPlus;
+import ui.BraveButton;
 import models.Resource;
 
 class WindowState extends FlxState
@@ -72,11 +72,11 @@ class WindowState extends FlxState
 
 	private function addChoice(label : String, action : Void -> Void)
 	{
-		var x : Float = 5.0 + Math.max(0, Math.floor(choiceCounter / 150.0)) * 255.0;
-		var y : Float = Lib.current.stage.stageHeight - choiceCounter % 150.0 - 25.0;
-		var button : FlxButtonPlus = new FlxButtonPlus(x, y, action, label, 250);
+		var x : Float = 8.0 + Math.max(0, Math.floor(choiceCounter / 174.0)) * 264.0;
+		var y : Float = Lib.current.stage.stageHeight - choiceCounter % 174.0 - 29.0;
+        var button : BraveButton = new BraveButton(x, y, label, action);
 		add(button);
-		choiceCounter += 25.0;
+		choiceCounter += 29.0;
 	}
 
 	@:generic

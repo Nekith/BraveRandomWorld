@@ -24,7 +24,7 @@
   social elysium: seduce them
   cult elysium: enlight them (add all spiritual)
   add sprawl location
-?
+  rework streets / sprawl
 ?
 
 == 0.11 ====================================
@@ -37,19 +37,19 @@
 
 == 0.10 ====================================
 
+  apartment: call companion to drain
   end condition: X in main resource
   apartment: wealth indicator
   end condition: chaos too high
   material elysium: call favors
-  buttons style
 
 == 0.9 =====================================
 
+x background color
+  buttons style
   streets: buy nice apparel (cost material)
   apartment: call companion to offer apparel (add spiritual)
   playground: call companion (cost material, add social)
-  apartment: call companion to drain
-  background color
 
 == 0.8 =====================================
 
@@ -157,6 +157,8 @@ x playground: find young beautiful companion
   apartment: call companion to drain
 
 == Resistance Quest ========================
+
+?
 
 == End Conditions ==========================
 

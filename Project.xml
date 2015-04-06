@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
-	<app title="Brave Random World" file="BraveRandomWorld" main="Main" version="0.8" company="Errant Works" />
+	<app title="Brave Random World" file="BraveRandomWorld" main="Main" version="0.9" company="Errant Works" />
 	
 	<app preloader="flixel.system.FlxPreloader" />
 	
@@ -18,7 +18,6 @@
 	<assets path="assets" />
 
 	<haxelib name="flixel"/>
-	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
 	
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />

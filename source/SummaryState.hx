@@ -7,7 +7,7 @@ import flixel.FlxState;
 import flixel.ui.FlxButton;
 import flixel.text.FlxText;
 import flixel.util.FlxMath;
-import flixel.addons.ui.FlxButtonPlus;
+import ui.BraveButton;
 import models.EnumStringer;
 
 class SummaryState extends WindowState
@@ -37,8 +37,8 @@ class SummaryState extends WindowState
         addText(["You got to do something."]);
         addText(["Get a lot of ", Reg.resources[0].name, ". Or destroy everything. Or I don't know."],
             [null, models.Resource.formatForNature(Reg.resources[0].nature)]);
-        add(new FlxButtonPlus(100.0, Lib.current.stage.stageHeight - 50.0, reroll, "I don't like it, re-roll it", 200));
-        add(new FlxButtonPlus(Lib.current.stage.stageWidth - 300.0, Lib.current.stage.stageHeight - 50.0, play, "Let's go", 200));
+        add(new BraveButton(26.0, Lib.current.stage.stageHeight - 50.0, "I don't like it, re-roll it", reroll));
+        add(new BraveButton(Lib.current.stage.stageWidth - 282.0, Lib.current.stage.stageHeight - 50.0, "Let's go", play));
     }
 
     public function reroll() : Void
