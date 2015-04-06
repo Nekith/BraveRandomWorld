@@ -40,7 +40,7 @@
 
 == 0.6 =====================================
 
-  add chaos counter
++ add chaos counter
   streets: random police check events
   events: mind blast enemies
   events: stab enemies

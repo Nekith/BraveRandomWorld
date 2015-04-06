@@ -19,7 +19,7 @@ class Reg
 	public static var ethny : Ethny;
 	public static var cult : Cult;
 
-    public static var cards : Map<String, Int> = ["live" => 1];
+    public static var cards : Map<String, Int> = ["chaos" => 0];
     public static var location : Location;
 
 	// @TODO
@@ -34,7 +34,7 @@ class Reg
         Reg.gender = null;
         Reg.ethny = null;
         Reg.cult = null;
-        Reg.cards = ["live" => 1];
+        Reg.cards = ["chaos" => 0];
         Reg.location = null;
     }
 }
