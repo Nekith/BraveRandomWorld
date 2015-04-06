@@ -41,6 +41,14 @@ class WindowState extends FlxState
 			text.addFormat(Resource.formatForNature(resource.nature));
 			add(text);
 		}
+		var offset : Float = 130.0;
+		for (card in Reg.cards.keys()) {
+			if (displayedCards.indexOf(card) >= 0 && Reg.cards[card] > 0) {
+				var str : String = card.substr(0, 1).toUpperCase() + card.substring(1) + " " + Reg.cards[card];
+				add(new FlxText(width + 10.0, offset, Lib.current.stage.stageWidth - 210.0, str, 12));
+				offset += 20.0;
+			}
+		}
 	}
 
 	private function addText(strings : Array<String>, ?formats : Array<FlxTextFormat>) : FlxText
@@ -78,4 +86,8 @@ class WindowState extends FlxState
 			action(arg);
 		});
 	}
+
+	static private var displayedCards : Array<String> = [
+		"gang", "weapon",
+	];
 }
