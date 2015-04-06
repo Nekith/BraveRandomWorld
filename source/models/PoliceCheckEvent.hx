@@ -36,10 +36,10 @@ class PoliceCheckEvent extends RandomEvent
             label: "Beat 'em up",
             action: beat
         });
-        /*choices.push({
+        choices.push({
             label: "Try to run",
             action: run
-        });*/
+        });
     }
 
     public function mindBlast(resource : Resource) : Void

@@ -70,11 +70,18 @@ class LocationState extends WindowState
             }
             addChoiceWithArg("Go to " + location.name(), move, location);
         }
-        var material : Resource = null;
         var materials : Array<Resource> = [];
         for (i in 0...Reg.resources.length) {
             if (Reg.resources[i].nature == ResourceNature.Material) {
-                material = Reg.resources[i];
+                if (Reg.cards.exists("weapon") == false || Reg.cards.get("weapon") <= 0) {
+                    addChoiceWithArg("Buy weapon for 5 " + Reg.resources[i].name, function(resource : Resource) {
+                        if (resource.quantity >= 5) {
+                            resource.quantity -= 5;
+                            Reg.cards.set("weapon", 1);
+                            FlxG.switchState(new LocationState(["You get yourself a weapon. Big guy."], [new FlxTextFormat(0xCCFF66)]));
+                        }
+                    }, Reg.resources[i]);
+                }
                 materials.push(Reg.resources[i]);
             } else if (Reg.resources[i].nature == ResourceNature.Spiritual) {
                 addChoiceWithArg("Form a gang for 5 " + Reg.resources[i].name, function(resource : Resource) {
@@ -85,15 +92,6 @@ class LocationState extends WindowState
                     }
                 }, Reg.resources[i]);
             }
-        }
-        if (Reg.cards.exists("weapon") == false || Reg.cards.get("weapon") == 0) {
-            addChoice("Buy weapon for 5 " + material.name, function() {
-                if (material.quantity >= 5) {
-                    material.quantity -= 5;
-                    Reg.cards.set("weapon", 1);
-                    FlxG.switchState(new LocationState(["You get yourself a weapon. Big guy."], [new FlxTextFormat(0xCCFF66)]));
-                }
-            });
         }
         if (Reg.cards.exists("gang") == true && Reg.cards.get("gang") >= 1) {
             addChoice("Rob a business", function() {

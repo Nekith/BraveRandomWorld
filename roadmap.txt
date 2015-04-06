@@ -48,7 +48,7 @@ x events: beat enemies up
 
 == 0.7 =====================================
 
-  events: run from enemies
+x events: run from enemies
   social faction: police blank slate
   generate apartment location
   apartment: throw party
