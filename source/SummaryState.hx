@@ -19,7 +19,7 @@ class SummaryState extends WindowState
         addText(["This is the Republic. This is the world."]);
         addText([""]);
         addText(["The Republic is ruled by ", Reg.resources[0].name, ", ", EnumStringer.resourceNatureVerbose(Reg.resources[0].nature), "."],
-                [null, models.Resource.formatForNature(Reg.resources[0].nature), null, null, null]);
+            [null, models.Resource.formatForNature(Reg.resources[0].nature), null, null, null]);
         addText([""]);
         addText(["You're a citizen, ", EnumStringer.genderVerbose(Reg.gender), "."]);
         addText(["You're from the ", Reg.ethny.name, " ethny, ", EnumStringer.ethnyStatusVerbose(Reg.ethny.status), "."]);
@@ -36,7 +36,7 @@ class SummaryState extends WindowState
         addText([""]);
         addText(["You got to do something."]);
         addText(["Get a lot of ", Reg.resources[0].name, ". Or destroy everything. Or I don't know."],
-                [null, models.Resource.formatForNature(Reg.resources[0].nature)]);
+            [null, models.Resource.formatForNature(Reg.resources[0].nature)]);
         add(new FlxButtonPlus(100.0, Lib.current.stage.stageHeight - 50.0, reroll, "I don't like it, re-roll it", 200));
         add(new FlxButtonPlus(Lib.current.stage.stageWidth - 300.0, Lib.current.stage.stageHeight - 50.0, play, "Let's go", 200));
     }

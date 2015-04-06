@@ -61,10 +61,12 @@ class LocationState extends WindowState
             addChoiceWithArg("Go to " + location.name(), move, location);
         }
         var material : Resource = null;
+        var materials : Array<Resource> = [];
         var spiritual : Resource = null;
         for (i in 0...Reg.resources.length) {
             if (Reg.resources[i].nature == ResourceNature.Material) {
                 material = Reg.resources[i];
+                materials.push(Reg.resources[i]);
             } else if (Reg.resources[i].nature == ResourceNature.Spiritual) {
                 spiritual = Reg.resources[i];
             }
@@ -85,6 +87,22 @@ class LocationState extends WindowState
                     Reg.cards.set("gang", 5);
                     FlxG.switchState(new LocationState(["Found a few guys. They seem ready to do a lot of things."], [new FlxTextFormat(0xCCFF66)]));
                 }
+            });
+        } else {
+            addChoice("Rob a business", function() {
+                var res : Resource = materials[FlxRandom.intRanged(0, materials.length - 1)];
+                var amount : Int = FlxRandom.intRanged(1, 4);
+                res.quantity += amount;
+                var lost : Int = FlxRandom.intRanged(0, 2);
+                var lostStr : String = "no one";
+                if (lost == 1) {
+                    lostStr = "one guy";
+                } else if (lost >= 2) {
+                    lostStr = lost + " guys";
+                }
+                Reg.cards.set("gang", Math.round(Math.max(0.0, Reg.cards.get("gang") - lost)));
+                FlxG.switchState(new LocationState(["You've robbed a business, gained " + Std.string(amount) + " " + res.name + " and lost " + lostStr + "."],
+                    [new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), Resource.formatForNature(res.nature), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66)]));
             });
         }
     }

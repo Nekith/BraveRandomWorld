@@ -34,7 +34,7 @@
 
 + streets: buy weapon
 + streets: form a gang
-  streets: rob business
++ streets: rob business
   card: wanted by police
   right panel: cards
 
