@@ -278,6 +278,13 @@ class LocationState extends WindowState
           FlxG.switchState(new LocationState(["Your loan is effective. Don't forget to repay it."], [new FlxTextFormat(0xCCFF66)]));
         }
       });
+    } else {
+      var amount : String = Std.string(faction.repayLoanAmount());
+      addChoice("Pay back loan (" + amount + " " + faction.resource.name + ")", function() {
+        if (faction.repayLoan() == true) {
+          FlxG.switchState(new LocationState(["You've payed your loan, thank you. That's so rare these days."], [new FlxTextFormat(0xCCFF66)]));
+        }
+      });
     }
     if (faction.reputation == FactionReputation.Neutral) {
       for (resource in Reg.resources) {

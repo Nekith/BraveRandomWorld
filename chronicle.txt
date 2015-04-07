@@ -29,7 +29,7 @@ x ethny status effect on random check
 x ethny status effect on membership
 x ethny status effect on loan
 x ethny status effect on call favors
-  material: pay back loan
+x material: pay back loan
 
 == 0.12 =========================================
 

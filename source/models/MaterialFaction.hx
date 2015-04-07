@@ -42,6 +42,21 @@ class MaterialFaction extends Faction
     return amount;
   }
 
+  public function repayLoan() : Bool
+  {
+    if (loan > 0 && resource.quantity >= repayLoanAmount()) {
+      resource.quantity -= repayLoanAmount();
+      loan = 0;
+      return true;
+    }
+    return false;
+  }
+
+  public function repayLoanAmount() : Int
+  {
+    return Math.round(loan * 1.2);
+  }
+
   public function trade(other : Resource) : Bool
   {
     if (other != resource && other.quantity >= 2) {
