@@ -318,6 +318,12 @@ class LocationState extends WindowState
             FlxG.switchState(new LocationState(["That's it, you're their new seer. Try not to become a martyr."], [new FlxTextFormat(0xCCFF66)]));
           }
         });
+      } else if (cult.reputation == FactionReputation.Exalted) {
+        addChoice("Do profession (gain " + cult.resource.name + ")", function() {
+          if (cult.resource.quantity < 30) {
+            cult.resource.quantity += 3;
+          }
+        });
       }
     }
   }

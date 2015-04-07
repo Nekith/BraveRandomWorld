@@ -35,7 +35,7 @@ non-fixed width font is bad for life-long karma
 
 x cult elysium: display status
 x cult elysium: enlight them
-  cult elysium: disclosure (add spiritual)
+x cult elysium: disclosure
   cult status effect on enlightment (social)
   cult status effect on initiation (material)
 
