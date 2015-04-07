@@ -82,7 +82,7 @@ class BuilderState extends FlxState
         Reg.resources = FlxRandom.shuffleArray(Reg.resources, 2);
         Reg.resources[0].isMajor = true;
         Reg.resources[0].quantity = 0;
-        Reg.resources[1].quantity = 0;
+        Reg.resources[1].quantity = 2;
     }
 
     private function generateEthnies() : Void

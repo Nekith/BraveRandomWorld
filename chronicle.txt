@@ -1,57 +1,65 @@
-== Releasing a new version =================
+x : done / ? : ? / roses : red / violets : blue
 
-  update versions in Project.xml & MenuState
-  create git tag
+the act of deliberately displaying this file in
+non-fixed width font is bad for life-long karma
 
-== 0.14 ====================================
+== 0.16 =======================================
 
-  add other resources in summary
-  generate dominant gender
-  generate other gender status
-? sexism effects
+? liberator quest
+
+== 0.15 =======================================
+
 ? resistance quest
 
-== 0.13 ====================================
+== 0.14 =======================================
 
+  generate dominant gender
+  generate other gender status
   ethny status effect on random check
   ethny status effect on membership
-  cult status effect on enlightment
-  cult status effect on initiation
-  cult elysium: disclosure
+? sexism effects
 
-== 0.12 ====================================
+== 0.13 =======================================
 
-  social elysium: seduce them
-  cult elysium: enlight them (add all spiritual)
-  add sprawl location
-  rework streets / sprawl (downtown)
+  material: pay back loan
+? loan enforcers (material or social or spiritual ways of dealing with that)
+?
+?
 ?
 
-== 0.11 ====================================
+== 0.12 =======================================
 
-  add self-esteem
-  low-life: sell yourself
-  playground: sell yourself
-  end condition: self-esteem too low
-  apartment: self-esteem indicator
+  cult elysium: display status
+  cult elysium: enlight them (spiritual)
+  cult elysium: disclosure (add spiritual)
+  cult status effect on enlightment (social)
+  cult status effect on initiation (material)
 
-== 0.10 ====================================
+== 0.11 =======================================
+
+  end condition: get arrested
+  add sprawl location
+  rework streets / sprawl (downtown)
+  add other resources in summary
+  social elysium: seduce them (spiritual)
+
+== 0.10 =======================================
 
   apartment: call companion to drain
   end condition: X in main resource
   apartment: wealth indicator
   end condition: chaos too high
-  material elysium: call favors
+  material elysium: call favors (social)
 
-== 0.9 =====================================
+== 0.9 ========================================
 
 x background color
 x buttons style
 x streets: buy nice apparel
 x apartment: call companion to offer apparel
-  playground: call companion (cost material, add social)
+x playground: call companion
 
-== 0.8 =====================================
+== 0.8 ========================================
 
 x generate low-life bar location
 x low-life: find young low-life people
@@ -59,7 +67,7 @@ x streets: buy drugs
 x playground: find young beautiful companion
 x apartment: drugs and young low-life
 
-== 0.7 =====================================
+== 0.7 ========================================
 
 x events: run from enemies
 x social faction: police blank slate
@@ -67,7 +75,7 @@ x generate apartment location
 x apartment: throw party
 x streets: chaos indicator
 
-== 0.6 =====================================
+== 0.6 ========================================
 
 x add chaos counter
 x streets: random police check events
@@ -75,7 +83,7 @@ x events: mind blast enemies
 x events: stab enemies
 x events: beat enemies up
 
-== 0.5 =====================================
+== 0.5 ========================================
 
 x streets: buy weapon
 x streets: form a gang
@@ -83,7 +91,7 @@ x streets: rob business
 x card: wanted by police
 x right panel: cards
 
-== 0.4 =====================================
+== 0.4 ========================================
 
 x generate social factions elysium
 x generate social factions high-life bar
@@ -91,7 +99,7 @@ x social elysium: become member
 x right panel: status
 x social elysium: make donation
 
-== 0.3 =====================================
+== 0.3 ========================================
 
 x associate cults with resources
 x generate cults elysium
@@ -99,7 +107,7 @@ x cult elysium: get initiated
 x material elysium: trade material resources
 x generate social factions
 
-== 0.2 =====================================
+== 0.2 ========================================
 
 x generate material factions
 x generate material factions elysium
@@ -107,7 +115,7 @@ x generate street location
 x move between known locations
 x material elysium: resource loan
 
-== 0.1 =====================================
+== 0.1 ========================================
 
 x generate resources
 x generate ethnies
@@ -115,40 +123,25 @@ x generate cults
 x generate character
 x summary screen
 
-== Reputation : Material ===================
+== Reputation : Material ======================
 
-  friendly: call favors (social, social friendly)
+x neutral: -
+  friendly: call favors
 ? exalted:
 
-== Reputation : Cult =======================
+== Reputation : Spiritual =====================
 
+x neutral: -
 x friendly: get initiated
-  exalted: enlight them (spiritual)
+  exalted: enlight them
 
-== Reputation : Social =====================
+== Reputation : Social ========================
 
+x neutral: -
 x friendly: become member
-  exalted: seduce them (spiritual)
+  exalted: seduce them
 
-== Resource : Material =====================
-
-x loan
-x robbery
-x trade
-  sell yourself
-
-== Resource : Spiritual ====================
-
-x drugs and young low-life
-  companion quest
-  disclosure
-
-== Resource : Social =======================
-
-  throw party
-x make donation
-
-== Companion Quest =========================
+== Companion Quest ============================
 
 x playground: find young beautiful companion
 x streets: buy nice apparel
@@ -156,15 +149,34 @@ x apartment: call companion to offer apparel
   playground: call companion
   apartment: call companion to drain
 
-== Resistance Quest ========================
+== Resistance Quest ===========================
 
-?
+? form a gang
+? rob a business
+? induce them (apartment)
+? get information on president (social)
+? gather the crew to prepare (apartment)
 
-== End Conditions ==========================
+== Liberator Quest ============================
+
+? seduce them
+? enlight them
+? disclosure the president
+? reveal everthing to the press
+? call for an end of this era
+
+== End Conditions =============================
 
   enough main resource
   chaos too high
-  resistance is futile
-  self-esteem too low
+  get arrested
+? resistance is futile
+? liberi fatali
 
-============================================
+== Releasing a new version ====================
+
+  update versions in Project.xml & MenuState
+  create git tag
+  push
+
+===============================================

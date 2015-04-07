@@ -297,9 +297,26 @@ class LocationState extends WindowState
                 if (Reg.location.faction.resource.quantity >= 3) {
                     Reg.location.faction.resource.quantity -= 3;
                     Reg.cards.set("companion", 1);
-                    FlxG.switchState(new LocationState(["An objectively beautiful specimen in our race is rare, furthermore single. But I've found one, who needs a nice attire."], [new FlxTextFormat(0xCCFF66)]));
+                    FlxG.switchState(new LocationState(["An objectively beautiful member of our race is rare, furthermore single. But I've found one, who needs a nice attire."], [new FlxTextFormat(0xCCFF66)]));
                 }
             });
+        } else if (Reg.cards.get("companion") == 3) {
+            for (resource in Reg.resources) {
+                if (resource.nature == ResourceNature.Material) {
+                    addChoiceWithArg("Invite your companion (cost 2 " + resource.name + ")", function(material : Resource) {
+                        if (material.quantity >= 2) {
+                            material.quantity -= 2;
+                            Reg.cards.set("companion", 4);
+                            for (social in Reg.resources) {
+                                if (social.nature == ResourceNature.Social) {
+                                    social.quantity += FlxRandom.intRanged(0, 2);
+                                }
+                            }
+                            FlxG.switchState(new LocationState(["It's time. A last night at the apartments for my love."], [new FlxTextFormat(0xCCFF66)]));
+                        }
+                    }, resource);
+                }
+            }
         }
     }
 
