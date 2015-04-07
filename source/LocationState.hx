@@ -197,15 +197,6 @@ class LocationState extends WindowState
             FlxG.switchState(new LocationState(["I just bought some drugs. Stimulus for weak minds."], [new FlxTextFormat(0xCCFF66)]));
           }
         }, resource);
-        if (Reg.cards.exists("companion") == true && Reg.cards.get("companion") == 1) {
-          addChoiceWithArg("Buy nice apparel for 1 " + resource.name, function(material : Resource) {
-            if (material.quantity >= 1) {
-              material.quantity -= 1;
-              Reg.cards.set("companion", 2);
-              FlxG.switchState(new LocationState(["It's not cheap for what it is but it's gonna worth it. Soon. In the mean time, I need to offer this."], [new FlxTextFormat(0xCCFF66)]));
-            }
-          }, resource);
-        }
       }
     }
   }
@@ -234,6 +225,15 @@ class LocationState extends WindowState
     for (resource in Reg.resources) {
       if (resource.nature == ResourceNature.Material) {
         materials.push(resource);
+        if (Reg.cards.exists("companion") == true && Reg.cards.get("companion") == 1) {
+          addChoiceWithArg("Buy nice apparel for 1 " + resource.name, function(material : Resource) {
+            if (material.quantity >= 1) {
+              material.quantity -= 1;
+              Reg.cards.set("companion", 2);
+              FlxG.switchState(new LocationState(["It's not cheap for what it is but it's gonna worth it. Soon. In the mean time, I need to offer this."], [new FlxTextFormat(0xCCFF66)]));
+            }
+          }, resource);
+        }
       }
     }
     if (Reg.cards.exists("gang") == true && Reg.cards.get("gang") >= 1) {
@@ -266,7 +266,7 @@ class LocationState extends WindowState
     var faction : MaterialFaction = cast(Reg.location.faction, MaterialFaction);
     if (faction.loan <= 0) {
       var amount : String = Std.string(faction.loanAmount());
-      addChoice("Make a loan of " + amount + " " + faction.resource.name + " (20% interest)", function() {
+      addChoice("Make a loan of " + amount + " " + faction.resource.name, function() {
         if (faction.makeLoan() == true) {
           FlxG.switchState(new LocationState(["Your loan is effective. Don't forget to repay it."], [new FlxTextFormat(0xCCFF66)]));
         }
@@ -310,6 +310,15 @@ class LocationState extends WindowState
           FlxG.switchState(new LocationState([Generator.initiationComment()], [new FlxTextFormat(0xCCFF66)]));
         }
       });
+    } else {
+      if (cult.reputation == FactionReputation.Friendly) {
+        var amount : String = Std.string(cult.enlightmentCost());
+        addChoice("Enlight them for " + amount + " " + cult.resource.name, function() {
+          if (cult.enlightThem() == true) {
+            FlxG.switchState(new LocationState(["That's it, you're their new seer. Try not to become a martyr."], [new FlxTextFormat(0xCCFF66)]));
+          }
+        });
+      }
     }
   }
 
@@ -359,7 +368,7 @@ class LocationState extends WindowState
     } else if (Reg.cards.get("companion") == 3) {
       for (resource in Reg.resources) {
         if (resource.nature == ResourceNature.Material) {
-          addChoiceWithArg("Invite your companion (cost 2 " + resource.name + ")", function(material : Resource) {
+          addChoiceWithArg("Invite your companion for 2 " + resource.name, function(material : Resource) {
             if (material.quantity >= 2) {
               material.quantity -= 2;
               Reg.cards.set("companion", 4);

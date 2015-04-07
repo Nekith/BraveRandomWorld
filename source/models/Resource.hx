@@ -22,7 +22,7 @@ enum ResourceNature
     this.name = name;
     this.nature = nature;
     isMajor = false;
-    quantity = 10;
+    quantity = 8;
   }
 
   public static function colorForNature(nature : ResourceNature) : Int

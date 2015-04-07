@@ -11,7 +11,7 @@ enum CultStatus
 }
 
 @:allow(BuilderState)
-  class Cult extends Faction
+class Cult extends Faction
 {
   public var status(default, null) : CultStatus;
   public var need(default, null) : Resource;
@@ -37,5 +37,20 @@ enum CultStatus
   public function initiationCost() : Int
   {
     return 3;
+  }
+
+  public function enlightThem() : Bool
+  {
+    if (reputation == FactionReputation.Friendly && resource.quantity >= enlightmentCost()) {
+      resource.quantity -= enlightmentCost();
+      reputation = FactionReputation.Exalted;
+      return true;
+    }
+    return false;
+  }
+
+  public function enlightmentCost() : Int
+  {
+    return 10;
   }
 }

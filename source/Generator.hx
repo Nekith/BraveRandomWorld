@@ -61,19 +61,19 @@ class Generator
     "sa", "se", "so", "su", "shi", "syu",
     "ta", "ti", "to", "tu",
     "wa", "we", "wo", "wu", "wyu",
-    ];
+  ];
 
   static private var cults : Array<String> = [
     "Church", "Cult", "Religion", "Faith", "Creed", "Following", "School",
-    ];
+  ];
 
   static private var materials : Array<String> = [
     "Syndicate", "Bank", "Group", "Consortium", "Foundation", "Union", "Partnership",
-    ];
+  ];
 
   static private var socials : Array<String> = [
-    "Party", "Club", "Circle", "Society", "Order", "Association", "League",
-    ];
+    "Party", "Club", "Circle", "Society", "Order", "Ring", "League",
+  ];
 
   static private var trades : Array<String> = [
     "Good transaction, thank you.",
@@ -81,7 +81,7 @@ class Generator
     "Good, good. Thank you very much.",
     "That's nice. Got a few more?",
     "Oh yeah. Thanks.",
-    ];
+  ];
 
   static private var initiations : Array<String> = [
     "Initiation is over. Do good, disciple.",
@@ -89,7 +89,7 @@ class Generator
     "*nods his head and points you the exit with one hand*",
     "*nods her head and points you the exit with one hand*",
     "You just took a step further on the path of enlightment.",
-    ];
+  ];
 
   static private var members : Array<String> = [
     "You were made for us. Welcome.",
@@ -97,7 +97,7 @@ class Generator
     "You deserve this. Congratulations! To life!",
     "The family is expanding. Welcome, partner.",
     "Make us proud, go earn some prestige in our name."
-      ];
+    ];
 
   static private var donations : Array<String> = [
     "Thank you for your generous donation.",
@@ -105,5 +105,5 @@ class Generator
     "I don't know if it's plain generosity or a move but thank you.",
     "I will make sure everybody knows what you just did. Thank you.",
     "That's a start. Gratitude.",
-    ];
+  ];
 }

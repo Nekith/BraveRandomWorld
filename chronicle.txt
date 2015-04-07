@@ -3,23 +3,27 @@ x : done / ? : ? / roses : red / violets : blue
 the act of deliberately displaying this file in
 non-fixed width font is bad for life-long karma
 
-== 0.16 =======================================
+== 0.16 =========================================
 
-? liberator quest
+? saviour quest
 
-== 0.15 =======================================
-
-? resistance quest
-
-== 0.14 =======================================
+== 0.15 =========================================
 
 ? loan enforcers (material or social or spiritual ways of dealing with that)
 ? sexism effects
-?
-?
+? self-esteem
+? disclosure: self-esteem loss
 ?
 
-== 0.13 =======================================
+== 0.14 =========================================
+
+  set resistance 1
+  set resistance 2
+  apartment: induce gang
+  playground: get information on the president
+  apartment: gather the crew to plan
+
+== 0.13 =========================================
 
   ethny status effect on random check
   ethny status effect on membership
@@ -27,15 +31,15 @@ non-fixed width font is bad for life-long karma
   generate dominant gender
   generate other gender status
 
-== 0.12 =======================================
+== 0.12 =========================================
 
 x cult elysium: display status
-  cult elysium: enlight them (spiritual)
+x cult elysium: enlight them
   cult elysium: disclosure (add spiritual)
   cult status effect on enlightment (social)
   cult status effect on initiation (material)
 
-== 0.11 =======================================
+== 0.11 =========================================
 
 x end condition: get arrested
 x add sprawl location
@@ -43,7 +47,7 @@ x rework streets / sprawl
 x add other resources in summary
 x social elysium: seduce them (spiritual)
 
-== 0.10 =======================================
+== 0.10 =========================================
 
 x apartment: call companion to drain
 x end condition: enough main resource
@@ -51,7 +55,7 @@ x apartment: wealth indicator
 x end condition: chaos too high
 x material elysium: call favors
 
-== 0.9 ========================================
+== 0.9 ==========================================
 
 x background color
 x buttons style
@@ -59,7 +63,7 @@ x streets: buy nice apparel
 x apartment: call companion to offer apparel
 x playground: call companion
 
-== 0.8 ========================================
+== 0.8 ==========================================
 
 x generate low-life bar location
 x low-life: find young low-life people
@@ -67,7 +71,7 @@ x streets: buy drugs
 x playground: find young beautiful companion
 x apartment: drugs and young low-life
 
-== 0.7 ========================================
+== 0.7 ==========================================
 
 x events: run from enemies
 x social faction: police blank slate
@@ -75,7 +79,7 @@ x generate apartment location
 x apartment: throw party
 x streets: chaos indicator
 
-== 0.6 ========================================
+== 0.6 ==========================================
 
 x add chaos counter
 x streets: random police check events
@@ -83,7 +87,7 @@ x events: mind blast enemies
 x events: stab enemies
 x events: beat enemies up
 
-== 0.5 ========================================
+== 0.5 ==========================================
 
 x streets: buy weapon
 x streets: form a gang
@@ -91,7 +95,7 @@ x streets: rob business
 x card: wanted by police
 x right panel: cards
 
-== 0.4 ========================================
+== 0.4 ==========================================
 
 x generate social factions elysium
 x generate social factions high-life bar
@@ -99,7 +103,7 @@ x social elysium: become member
 x right panel: status
 x social elysium: make donation
 
-== 0.3 ========================================
+== 0.3 ==========================================
 
 x associate cults with resources
 x generate cults elysium
@@ -107,7 +111,7 @@ x cult elysium: get initiated
 x material elysium: trade material resources
 x generate social factions
 
-== 0.2 ========================================
+== 0.2 ==========================================
 
 x generate material factions
 x generate material factions elysium
@@ -115,7 +119,7 @@ x generate street location
 x move between known locations
 x material elysium: resource loan
 
-== 0.1 ========================================
+== 0.1 ==========================================
 
 x generate resources
 x generate ethnies
@@ -123,25 +127,25 @@ x generate cults
 x generate character
 x summary screen
 
-== Reputation : Material ======================
+== Reputation : Material ========================
 
 x neutral: -
 x friendly: call favors
 ? exalted:
 
-== Reputation : Spiritual =====================
+== Reputation : Spiritual =======================
 
 x neutral: -
 x friendly: get initiated
-  exalted: enlight them
+x exalted: enlight them
 
-== Reputation : Social ========================
+== Reputation : Social ==========================
 
 x neutral: -
 x friendly: become member
   exalted: seduce them
 
-== Companion Quest ============================
+== Companion Quest ==============================
 
 x playground: find young beautiful companion
 x streets: buy nice apparel
@@ -149,23 +153,23 @@ x apartment: call companion to offer apparel
 x playground: call companion
 x apartment: call companion to drain
 
-== Resistance Quest ===========================
+== Resistance Quest =============================
 
-  form a gang
-  rob a business
-  induce them (apartment)
-  get information on president (social)
-  gather the crew to prepare (apartment)
+  sprawl: form a gang
+  streets: rob a business
+  apartment: induce gang
+  playground: get information on president
+  apartment: gather the crew to plan
 
-== Liberator Quest ============================
+== Saviour Quest ================================
 
-? seduce them
-? enlight them
-? disclosure the president
-? reveal everthing to the press
-? call for an end of this era
+? social elysium: seduce them
+? cult elysium: enlight them
+? playground: invite the president for disclosure
+? playground: reveal everthing to the press
+? downtown: make a speech
 
-== End Conditions =============================
+== End Conditions ===============================
 
 x enough main resource
 x chaos too high
