@@ -13,23 +13,23 @@ non-fixed width font is bad for life-long karma
 
 == 0.14 =======================================
 
-  generate dominant gender
-  generate other gender status
-  ethny status effect on random check
-  ethny status effect on membership
+? loan enforcers (material or social or spiritual ways of dealing with that)
 ? sexism effects
+?
+?
+?
 
 == 0.13 =======================================
 
+  ethny status effect on random check
+  ethny status effect on membership
   material: pay back loan
-? loan enforcers (material or social or spiritual ways of dealing with that)
-?
-?
-?
+  generate dominant gender
+  generate other gender status
 
 == 0.12 =======================================
 
-  cult elysium: display status
+x cult elysium: display status
   cult elysium: enlight them (spiritual)
   cult elysium: disclosure (add spiritual)
   cult status effect on enlightment (social)
@@ -41,7 +41,7 @@ x end condition: get arrested
 x add sprawl location
 x rework streets / sprawl
 x add other resources in summary
-  social elysium: seduce them (spiritual)
+x social elysium: seduce them (spiritual)
 
 == 0.10 =======================================
 
@@ -126,7 +126,7 @@ x summary screen
 == Reputation : Material ======================
 
 x neutral: -
-  friendly: call favors
+x friendly: call favors
 ? exalted:
 
 == Reputation : Spiritual =====================
@@ -146,16 +146,16 @@ x friendly: become member
 x playground: find young beautiful companion
 x streets: buy nice apparel
 x apartment: call companion to offer apparel
-  playground: call companion
-  apartment: call companion to drain
+x playground: call companion
+x apartment: call companion to drain
 
 == Resistance Quest ===========================
 
-? form a gang
-? rob a business
-? induce them (apartment)
-? get information on president (social)
-? gather the crew to prepare (apartment)
+  form a gang
+  rob a business
+  induce them (apartment)
+  get information on president (social)
+  gather the crew to prepare (apartment)
 
 == Liberator Quest ============================
 
@@ -168,15 +168,9 @@ x apartment: call companion to offer apparel
 == End Conditions =============================
 
 x enough main resource
-  chaos too high
-  get arrested
-? resistance is futile
+x chaos too high
+x get arrested
+  resistance is futile
 ? liberi fatali
-
-== Releasing a new version ====================
-
-  update versions in Project.xml & MenuState
-  create git tag
-  push
 
 ===============================================

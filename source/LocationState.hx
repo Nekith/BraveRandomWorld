@@ -31,8 +31,6 @@ class LocationState extends WindowState
         if (Reg.location.nature == LocationNature.Apartments) {
           createApartments();
         } else if (Reg.location.nature == LocationNature.Elysium) {
-          addText(["You're in the Elysium of the ", Reg.location.faction.name, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
-          addText([""]);
           addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
           if (Reg.location.faction.resource.nature == ResourceNature.Material) {
             createMaterialElysium();
@@ -261,6 +259,8 @@ class LocationState extends WindowState
 
   private function createMaterialElysium() : Void
   {
+    addText(["You're in the Elysium of the ", Reg.location.faction.name, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
+    addText([""]);
     addText(["A corporate building."]);
     addText(["It's neutral, it's clean and there's a lot of people."]);
     var faction : MaterialFaction = cast(Reg.location.faction, MaterialFaction);
@@ -296,9 +296,13 @@ class LocationState extends WindowState
 
   private function createCultElysium() : Void
   {
+    var cult : Cult = cast(Reg.location.faction, Cult);
+    var status : String = EnumStringer.cultStatusVerbose(cult.status);
+    addText(["You're in the Elysium of the ", Reg.location.faction.name, ", ", status, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
+    addText([""]);
     addText(["A spiritual place."]);
     addText(["It's cold, it's dark and there's a lot of people."]);
-    var cult : Cult = cast(Reg.location.faction, Cult);
+    addText([""]);
     if (Reg.cult != cult) {
       var amount : String = Std.string(cult.initiationCost());
       addChoice("Get initiated (" + amount + " " + cult.need.name + ")", function() {
@@ -311,6 +315,8 @@ class LocationState extends WindowState
 
   private function createSocialElysium() : Void
   {
+    addText(["You're in the Elysium of the ", Reg.location.faction.name, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
+    addText([""]);
     addText(["A meeting venue."]);
     addText(["It's warm, it's bright and there's a lot of people."]);
     var faction : SocialFaction = cast(Reg.location.faction, SocialFaction);
