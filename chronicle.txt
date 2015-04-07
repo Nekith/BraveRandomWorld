@@ -49,7 +49,7 @@ x apartment: call companion to drain
 x end condition: enough main resource
 x apartment: wealth indicator
 x end condition: chaos too high
-  material elysium: call favors (social)
+x material elysium: call favors
 
 == 0.9 ========================================
 
