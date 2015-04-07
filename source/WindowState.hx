@@ -93,7 +93,7 @@ class WindowState extends FlxState
 
 	private function checkEndConditions() : Bool
 	{
-		if (Reg.resources[0].quantity >= 30 || true) {
+		if (Reg.resources[0].quantity >= 30) {
 			Reg.end = "The Important Individual";
 			Reg.endSentences = [
 				"You're now an important figure.",

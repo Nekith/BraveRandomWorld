@@ -72,6 +72,14 @@ class LocationState extends WindowState
         addText([""]);
         addText(["Your private home."]);
         addText(["It's comfortable, it's impersonal and there's nobody. Except you."]);
+        addText([""]);
+        var wealth : String = "It lacks some brillance. It could stand for a low-life flat.";
+        if (Reg.resources[0].quantity >= 10) {
+            wealth = "It starts to look like something. I'm on the right path.";
+        } else if (Reg.resources[0].quantity >= 20) {
+            wealth = "This is a place for influencial people. I'm coming.";
+        }
+        addText([wealth]);
         addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
         for (material in Reg.resources) {
             if (material.nature == ResourceNature.Material) {
