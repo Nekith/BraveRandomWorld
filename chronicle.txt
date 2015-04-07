@@ -48,7 +48,7 @@ non-fixed width font is bad for life-long karma
 x apartment: call companion to drain
 x end condition: enough main resource
 x apartment: wealth indicator
-  end condition: chaos too high
+x end condition: chaos too high
   material elysium: call favors (social)
 
 == 0.9 ========================================

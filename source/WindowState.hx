@@ -104,7 +104,18 @@ class WindowState extends FlxState
 				"You were made for this, right?",
 			];
 			return true;
-		}
+		} else if (Reg.cards.get("chaos") >= 10 || true) {
+            Reg.end = "Chaos";
+            Reg.endSentences = [
+                "The Republic became too unstable.",
+                "There are riots, uprising.",
+                "You don't know to what it's gonna lead.",
+                "For the second time of your life, you're scared.",
+                "",
+                "It's the end of the world as you know it.",
+            ];
+            return true;
+        }
 		return false;
 	}
 }
