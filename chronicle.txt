@@ -40,7 +40,7 @@ non-fixed width font is bad for life-long karma
 x end condition: get arrested
 x add sprawl location
 x rework streets / sprawl
-  add other resources in summary
+x add other resources in summary
   social elysium: seduce them (spiritual)
 
 == 0.10 =======================================

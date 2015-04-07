@@ -9,6 +9,7 @@ import flixel.text.FlxText;
 import flixel.util.FlxMath;
 import ui.BraveButton;
 import models.EnumStringer;
+import models.Resource;
 
 class SummaryState extends WindowState
 {
@@ -19,6 +20,23 @@ class SummaryState extends WindowState
     addText(["This is the Republic. This is the world."]);
     addText([""]);
     addText(["The Republic is ruled by ", Reg.resources[0].name, ", ", EnumStringer.resourceNatureVerbose(Reg.resources[0].nature), "."], [null, models.Resource.formatForNature(Reg.resources[0].nature), null, null, null]);
+    var resources : Array<String> = ["Other resources are "];
+    var formats : Array<FlxTextFormat> = [null];
+    for (i in 1...Reg.resources.length) {
+      resources.push(Reg.resources[i].name);
+      formats.push(Resource.formatForNature(Reg.resources[i].nature));
+      if (i == Reg.resources.length - 2) {
+        resources.push(" and ");
+        formats.push(null);
+      } else if (i == Reg.resources.length - 1) {
+        resources.push(".");
+        formats.push(null);
+      } else {
+        resources.push(", ");
+        formats.push(null);
+      }
+    }
+    addText(resources, formats);
     addText([""]);
     addText(["You're a citizen, ", EnumStringer.genderVerbose(Reg.gender), "."]);
     addText(["You're from the ", Reg.ethny.name, " ethny, ", EnumStringer.ethnyStatusVerbose(Reg.ethny.status), "."]);
