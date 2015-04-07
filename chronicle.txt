@@ -143,7 +143,7 @@ x exalted: enlight them
 
 x neutral: -
 x friendly: become member
-  exalted: seduce them
+x exalted: seduce them
 
 == Companion Quest ==============================
 
