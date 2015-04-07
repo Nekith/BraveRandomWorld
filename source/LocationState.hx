@@ -97,16 +97,28 @@ class LocationState extends WindowState
                 }
             }
         }
-        if (Reg.cards.exists("companion") == true && Reg.cards.get("companion") == 2) {
-            addChoice("Offer the clothing to your companion", function() {
-                Reg.cards.set("companion", 3);
-                for (resource in Reg.resources) {
-                    if (resource.nature == ResourceNature.Spiritual) {
-                        resource.quantity += FlxRandom.intRanged(1, 2);
+        if (Reg.cards.exists("companion") == true) {
+            if (Reg.cards.get("companion") == 2) {
+                addChoice("Offer the clothing to your companion", function() {
+                    Reg.cards.set("companion", 3);
+                    for (resource in Reg.resources) {
+                        if (resource.nature == ResourceNature.Spiritual) {
+                            resource.quantity += FlxRandom.intRanged(1, 2);
+                        }
                     }
-                }
-                FlxG.switchState(new LocationState(["It's starting to be juicy. I now need to show my treasure to the world."], [new FlxTextFormat(0xCCFF66)]));
-            });
+                    FlxG.switchState(new LocationState(["It's starting to be juicy. I now need to show my treasure to the world."], [new FlxTextFormat(0xCCFF66)]));
+                });
+            } else if (Reg.cards.get("companion") == 4) {
+                addChoice("Invite your companion", function() {
+                    Reg.cards.set("companion", 0);
+                    for (resource in Reg.resources) {
+                        if (resource.nature == ResourceNature.Spiritual) {
+                            resource.quantity += FlxRandom.intRanged(9, 15);
+                        }
+                    }
+                    FlxG.switchState(new LocationState(["At last. Thank you, love."], [new FlxTextFormat(0xCCFF66)]));
+                });
+            }
         }
     }
 

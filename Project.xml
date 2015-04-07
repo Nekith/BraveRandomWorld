@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
-	<app title="Brave Random World" file="BraveRandomWorld" main="Main" version="0.9" company="Errant Works" />
+	<app title="Brave Random World" file="BraveRandomWorld" main="Main" version="0.10" company="Errant Works" />
 	
 	<app preloader="flixel.system.FlxPreloader" />
 	
