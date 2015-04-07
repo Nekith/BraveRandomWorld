@@ -41,4 +41,19 @@ class SocialFaction extends Faction
     }
     return false;
   }
+
+  public function seduceThem() : Bool
+  {
+    if (reputation == FactionReputation.Friendly && resource.quantity >= seductionCost()) {
+      resource.quantity -= seductionCost();
+      reputation = FactionReputation.Exalted;
+      return true;
+    }
+    return false;
+  }
+
+  public function seductionCost() : Int
+  {
+    return 10;
+  }
 }

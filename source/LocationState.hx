@@ -355,6 +355,14 @@ class LocationState extends WindowState
           FlxG.switchState(new LocationState(["It's done. Don't get too cocky."], [new FlxTextFormat(0xCCFF66)]));
         }
       });
+      if (faction.reputation == FactionReputation.Friendly) {
+        var amount : String = Std.string(faction.seductionCost());
+        addChoice("Seduce them for " + amount + " " + faction.resource.name, function() {
+          if (faction.seduceThem() == true) {
+            FlxG.switchState(new LocationState(["Congratulations, you're their new leader. Feels great, no?"], [new FlxTextFormat(0xCCFF66)]));
+          }
+        });
+      }
     }
   }
 
