@@ -37,7 +37,7 @@ non-fixed width font is bad for life-long karma
 
 == 0.11 =======================================
 
-  end condition: get arrested
+x end condition: get arrested
   add sprawl location
   rework streets / sprawl (downtown)
   add other resources in summary

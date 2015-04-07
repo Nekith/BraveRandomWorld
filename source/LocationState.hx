@@ -211,11 +211,8 @@ class LocationState extends WindowState
         } else if (lost >= 2) {
           lostStr = lost + " guys";
         }
-        if (FlxRandom.int() % 2 == 0) {
-          Reg.cards.set("wanted", 1);
-        }
         Reg.cards.set("gang", Math.round(Math.max(0.0, Reg.cards.get("gang") - lost)));
-        Reg.cards.set("chaos", Reg.cards.get("chaos") + 1);
+        Reg.cards.set("chaos", (Reg.cards.exists("wanted") ? Reg.cards.get("chaos") : 0) + 1);
         Reg.cards.set("wanted", Reg.cards.get("wanted") + 1);
         FlxG.switchState(new LocationState(["You've robbed a business, gained " + Std.string(amount) + " " + res.name + " and lost " + lostStr + "."],
             [new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), Resource.formatForNature(res.nature), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66)]));

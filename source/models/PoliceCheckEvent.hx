@@ -69,7 +69,8 @@ class PoliceCheckEvent extends RandomEvent
       Reg.event = null;
       FlxG.switchState(new LocationState());
     } else {
-      // oops
+      getArrested();
+      FlxG.switchState(new EndState());
     }
   }
 
@@ -79,7 +80,20 @@ class PoliceCheckEvent extends RandomEvent
       Reg.event = null;
       FlxG.switchState(new LocationState());
     } else {
-      // oops
+      getArrested();
+      FlxG.switchState(new EndState());
     }
+  }
+
+  private function getArrested() : Void
+  {
+    Reg.end = "Four Walls";
+    Reg.endSentences = [
+      "You have been stopped, in plain momentum.",
+      "It's a pitty.",
+      "You played and you lost.",
+      "",
+      "You should have been more vigilant.",
+    ];
   }
 }
