@@ -1,5 +1,6 @@
 package models;
 
+import models.Ethny;
 import models.Faction;
 import models.Location;
 import models.Resource;
@@ -29,7 +30,13 @@ class SocialFaction extends Faction
 
   public function membershipCost() : Int
   {
-    return 4;
+    var cost : Int = 4;
+    if (Reg.ethny.status == EthnyStatus.Dominant) {
+      cost -= 1;
+    } else if (Reg.ethny.status == EthnyStatus.Prejudiced) {
+      cost += 1;
+    }
+    return cost;
   }
 
   public function makeDonation() : Bool

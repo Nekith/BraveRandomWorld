@@ -9,6 +9,7 @@ import flixel.util.FlxMath;
 import flixel.util.FlxRandom;
 import models.Cult;
 import models.EnumStringer;
+import models.Ethny;
 import models.Faction;
 import models.Location;
 import models.MaterialFaction;
@@ -51,7 +52,13 @@ class LocationState extends WindowState
         } else if (Reg.location.nature == LocationNature.Sprawl) {
           createSprawl();
         } else {
-          if (FlxRandom.intRanged(1, 100) <= Reg.cards.get("wanted") * 5) {
+          var chance : Int = Reg.cards.get("wanted") * 5;
+          if (Reg.ethny.status == EthnyStatus.Dominant) {
+            chance -= Reg.cards.get("wanted");
+          } else if (Reg.ethny.status == EthnyStatus.Prejudiced) {
+            chance += Reg.cards.get("wanted");
+          }
+          if (FlxRandom.intRanged(1, 100) <= chance) {
             Reg.event = new PoliceCheckEvent();
             FlxG.switchState(new EventState());
           } else {
@@ -275,7 +282,8 @@ class LocationState extends WindowState
     if (faction.reputation == FactionReputation.Neutral) {
       for (resource in Reg.resources) {
         if (resource.nature == ResourceNature.Social) {
-          addChoiceWithArg("Call favors (cost 3 " + resource.name + ")", function(social : Resource) {
+          var amount : String = Std.string(faction.favorsCost());
+          addChoiceWithArg("Call favors (cost " + amount + " " + resource.name + ")", function(social : Resource) {
             if (faction.callFavors(resource) == true) {
               FlxG.switchState(new LocationState(["Thank you for your help in this delicate situation. We'll remember this."], [new FlxTextFormat(0xCCFF66)]));
             }

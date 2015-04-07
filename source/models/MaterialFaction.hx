@@ -1,5 +1,6 @@
 package models;
 
+import models.Ethny;
 import models.Faction;
 import models.Resource;
 
@@ -33,6 +34,11 @@ class MaterialFaction extends Faction
     } else if (reputation == FactionReputation.Friendly) {
       amount += 4;
     }
+    if (Reg.ethny.status == EthnyStatus.Dominant) {
+      amount += 1;
+    } else if (Reg.ethny.status == EthnyStatus.Prejudiced) {
+      amount -= 1;
+    }
     return amount;
   }
 
@@ -48,11 +54,22 @@ class MaterialFaction extends Faction
 
   public function callFavors(other : Resource) : Bool
   {
-    if (reputation == FactionReputation.Neutral && other.quantity >= 3) {
-      other.quantity -= 3;
+    if (reputation == FactionReputation.Neutral && other.quantity >= favorsCost()) {
+      other.quantity -= favorsCost();
       reputation = FactionReputation.Friendly;
       return true;
     }
     return false;
+  }
+
+  public function favorsCost() : Int
+  {
+    var cost : Int = 3;
+    if (Reg.ethny.status == EthnyStatus.Dominant) {
+      cost -= 1;
+    } else if (Reg.ethny.status == EthnyStatus.Prejudiced) {
+      cost += 1;
+    }
+    return cost;
   }
 }

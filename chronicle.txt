@@ -9,11 +9,11 @@
 
 == 0.15 =========================================
 
+  generate dominant gender
+  generate other gender status
 ? loan enforcers (material or social or spiritual ways of dealing with that)
 ? sexism effects
 ? self-esteem
-? disclosure: self-esteem loss
-?
 
 == 0.14 =========================================
 
@@ -25,11 +25,11 @@
 
 == 0.13 =========================================
 
-  ethny status effect on random check
-  ethny status effect on membership
+x ethny status effect on random check
+x ethny status effect on membership
+x ethny status effect on loan
+x ethny status effect on call favors
   material: pay back loan
-  generate dominant gender
-  generate other gender status
 
 == 0.12 =========================================
 
