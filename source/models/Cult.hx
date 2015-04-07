@@ -1,5 +1,6 @@
 package models;
 
+import flixel.util.FlxRandom;
 import models.Faction;
 import models.Resource;
 
@@ -36,13 +37,30 @@ class Cult extends Faction
 
   public function initiationCost() : Int
   {
-    return 3;
+    var cost : Int = 3;
+    if (status == CultStatus.Official) {
+      cost -= 1;
+    } else if (status == CultStatus.Unrecognized) {
+      cost += 1;
+    }
+    return cost;
   }
 
   public function enlightThem() : Bool
   {
     if (reputation == FactionReputation.Friendly && resource.quantity >= enlightmentCost()) {
       resource.quantity -= enlightmentCost();
+      for (social in Reg.resources) {
+        if (social.nature == ResourceNature.Social) {
+          var gain : Int = FlxRandom.intRanged(3, 6);
+          if (status == CultStatus.Official) {
+            gain += 1;
+          } else if (status == CultStatus.Unrecognized) {
+            gain -= 1;
+          }
+          social.quantity += gain;
+        }
+      }
       reputation = FactionReputation.Exalted;
       return true;
     }
