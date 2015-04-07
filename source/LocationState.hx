@@ -50,6 +50,8 @@ class LocationState extends WindowState
           if (Reg.location.faction.resource.nature == ResourceNature.Social) {
             createSocialPlayground();
           }
+        } else if (Reg.location.nature == LocationNature.Sprawl) {
+          createSprawl();
         } else {
           if (FlxRandom.intRanged(1, 100) <= Reg.cards.get("wanted") * 5) {
             Reg.event = new PoliceCheckEvent();
@@ -156,26 +158,14 @@ class LocationState extends WindowState
     }
   }
 
-  private function createStreets() : Void
+  private function createSprawl() : Void
   {
     addText(["You're out."]);
     addText([""]);
-    addText(["The streets."]);
+    addText(["The Sprawl."]);
     addText(["It's moisty, it's dirty and there's a lot of people."]);
     addText([""]);
-    var str : String = "There's not a lot of law enforcers out there.";
-    if (Reg.cards.get("chaos") >= 12) {
-      str = "There are cops everywhere.";
-    } else if (Reg.cards.get("chaos") >= 5) {
-      str = "There are some police patrol. They seem to occur more often.";
-    }
-    addText([str]);
-    for (location in Reg.locations) {
-      if (location.nature == LocationNature.Streets || location.known == false) {
-        continue;
-      }
-      addChoiceWithArg(location.name(), move, location);
-    }
+    addChoiceWithArg("Return to Downtown", move, Reg.locations[0]);
     var materials : Array<Resource> = [];
     for (i in 0...Reg.resources.length) {
       if (Reg.resources[i].nature == ResourceNature.Material) {
@@ -199,25 +189,6 @@ class LocationState extends WindowState
         }, Reg.resources[i]);
       }
     }
-    if (Reg.cards.exists("gang") == true && Reg.cards.get("gang") >= 1) {
-      addChoice("Rob a business", function() {
-        var res : Resource = materials[FlxRandom.intRanged(0, materials.length - 1)];
-        var amount : Int = FlxRandom.intRanged(1, 4);
-        res.quantity += amount;
-        var lost : Int = FlxRandom.intRanged(0, 2);
-        var lostStr : String = "no one";
-        if (lost == 1) {
-          lostStr = "one guy";
-        } else if (lost >= 2) {
-          lostStr = lost + " guys";
-        }
-        Reg.cards.set("gang", Math.round(Math.max(0.0, Reg.cards.get("gang") - lost)));
-        Reg.cards.set("chaos", (Reg.cards.exists("wanted") ? Reg.cards.get("chaos") : 0) + 1);
-        Reg.cards.set("wanted", Reg.cards.get("wanted") + 1);
-        FlxG.switchState(new LocationState(["You've robbed a business, gained " + Std.string(amount) + " " + res.name + " and lost " + lostStr + "."],
-            [new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), Resource.formatForNature(res.nature), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66)]));
-      });
-    }
     for (resource in Reg.resources) {
       if (resource.nature == ResourceNature.Material) {
         addChoiceWithArg("Buy some drugs for 1 " + resource.name, function(material : Resource) {
@@ -238,6 +209,53 @@ class LocationState extends WindowState
           }, resource);
         }
       }
+    }
+  }
+
+  private function createStreets() : Void
+  {
+    addText(["You're out."]);
+    addText([""]);
+    addText(["Downtown."]);
+    addText(["It's freezing it's bare and there's a lot of people."]);
+    addText([""]);
+    var str : String = "There's not a lot of law enforcers out there.";
+    if (Reg.cards.get("chaos") >= 12) {
+      str = "There are cops everywhere.";
+    } else if (Reg.cards.get("chaos") >= 5) {
+      str = "There are some police patrol. They seem to occur more often.";
+    }
+    addText([str]);
+    for (location in Reg.locations) {
+      if (location.nature == LocationNature.Streets || location.known == false) {
+        continue;
+      }
+      addChoiceWithArg(location.name(), move, location);
+    }
+    var materials : Array<Resource> = [];
+    for (resource in Reg.resources) {
+      if (resource.nature == ResourceNature.Material) {
+        materials.push(resource);
+      }
+    }
+    if (Reg.cards.exists("gang") == true && Reg.cards.get("gang") >= 1) {
+      addChoice("Rob a business", function() {
+        var res : Resource = materials[FlxRandom.intRanged(0, materials.length - 1)];
+        var amount : Int = FlxRandom.intRanged(1, 4);
+        res.quantity += amount;
+        var lost : Int = FlxRandom.intRanged(0, 2);
+        var lostStr : String = "no one";
+        if (lost == 1) {
+          lostStr = "one guy";
+        } else if (lost >= 2) {
+          lostStr = lost + " guys";
+        }
+        Reg.cards.set("gang", Math.round(Math.max(0.0, Reg.cards.get("gang") - lost)));
+        Reg.cards.set("chaos", (Reg.cards.exists("wanted") ? Reg.cards.get("chaos") : 0) + 1);
+        Reg.cards.set("wanted", Reg.cards.get("wanted") + 1);
+        FlxG.switchState(new LocationState(["You've robbed a business, gained " + Std.string(amount) + " " + res.name + " and lost " + lostStr + "."],
+            [new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), Resource.formatForNature(res.nature), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66)]));
+      });
     }
   }
 

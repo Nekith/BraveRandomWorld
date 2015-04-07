@@ -141,6 +141,7 @@ class BuilderState extends FlxState
   private function generateLocations() : Void
   {
     Reg.locations.push(new Location(LocationNature.Streets, true));
+    Reg.locations.push(new Location(LocationNature.Sprawl, true));
     Reg.locations.push(new Location(LocationNature.Apartments, true));
     Reg.locations.push(new Location(LocationNature.Lowlife, true));
     for (faction in Reg.factions) {

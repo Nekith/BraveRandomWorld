@@ -6,6 +6,7 @@ enum LocationNature
   Elysium;
   Lowlife;
   Playground;
+  Sprawl;
   Streets;
 }
 

@@ -47,11 +47,13 @@ class EnumStringer
     if (n == LocationNature.Apartments) {
       str = "Your Apartments";
     } else if (n == LocationNature.Lowlife) {
-      str = "Lower Afterlife bar";
+      str = "The Lower Afterlife";
     } else if (n == LocationNature.Elysium) {
       str = "Elysium";
     } else if (n == LocationNature.Playground) {
       str = "Playground";
+    } else if (n == LocationNature.Sprawl) {
+      str = "The Sprawl";
     }
     return str;
   }
