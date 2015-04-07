@@ -21,43 +21,47 @@ class LocationState extends WindowState
     override public function create() : Void
     {
         super.create();
-        if (Reg.event != null) {
-            FlxG.switchState(new EventState());
+        if (checkEndConditions() == true) {
+            FlxG.switchState(new EndState());
         } else {
-            displayRightPanel();
-            if (Reg.location.nature == LocationNature.Apartments) {
-                createApartments();
-            } else if (Reg.location.nature == LocationNature.Elysium) {
-                addText(["You're in the Elysium of the ", Reg.location.faction.name, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
-                addText([""]);
-                addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
-                if (Reg.location.faction.resource.nature == ResourceNature.Material) {
-                    createMaterialElysium();
-                } else if (Reg.location.faction.resource.nature == ResourceNature.Spiritual) {
-                    createCultElysium();
-                } else if (Reg.location.faction.resource.nature == ResourceNature.Social) {
-                    createSocialElysium();
-                }
-            } else if (Reg.location.nature == LocationNature.Lowlife) {
-                createLowlife();
-            } else if (Reg.location.nature == LocationNature.Playground) {
-                addText(["You're in the Playground of the ", Reg.location.faction.name, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
-                addText([""]);
-                addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
-                if (Reg.location.faction.resource.nature == ResourceNature.Social) {
-                    createSocialPlayground();
-                }
+            if (Reg.event != null) {
+                FlxG.switchState(new EventState());
             } else {
-                if (FlxRandom.intRanged(1, 100) <= Reg.cards.get("wanted") * 5) {
-                    Reg.event = new PoliceCheckEvent();
-                    FlxG.switchState(new EventState());
+                displayRightPanel();
+                if (Reg.location.nature == LocationNature.Apartments) {
+                    createApartments();
+                } else if (Reg.location.nature == LocationNature.Elysium) {
+                    addText(["You're in the Elysium of the ", Reg.location.faction.name, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
+                    addText([""]);
+                    addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
+                    if (Reg.location.faction.resource.nature == ResourceNature.Material) {
+                        createMaterialElysium();
+                    } else if (Reg.location.faction.resource.nature == ResourceNature.Spiritual) {
+                        createCultElysium();
+                    } else if (Reg.location.faction.resource.nature == ResourceNature.Social) {
+                        createSocialElysium();
+                    }
+                } else if (Reg.location.nature == LocationNature.Lowlife) {
+                    createLowlife();
+                } else if (Reg.location.nature == LocationNature.Playground) {
+                    addText(["You're in the Playground of the ", Reg.location.faction.name, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
+                    addText([""]);
+                    addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
+                    if (Reg.location.faction.resource.nature == ResourceNature.Social) {
+                        createSocialPlayground();
+                    }
                 } else {
-                    createStreets();
+                    if (FlxRandom.intRanged(1, 100) <= Reg.cards.get("wanted") * 5) {
+                        Reg.event = new PoliceCheckEvent();
+                        FlxG.switchState(new EventState());
+                    } else {
+                        createStreets();
+                    }
                 }
-            }
-            if (flashStrings != null) {
-                addText([""]);
-                addText(flashStrings, flashFormats);
+                if (flashStrings != null) {
+                    addText([""]);
+                    addText(flashStrings, flashFormats);
+                }
             }
         }
     }

@@ -24,6 +24,9 @@ class Reg
     public static var location : Location;
     public static var event : RandomEvent;
 
+    public static var end : String;
+    public static var endSentences : Array<String>;
+
     public static function clear() : Void
     {
         Reg.resources = [];

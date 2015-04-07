@@ -90,4 +90,21 @@ class WindowState extends FlxState
 	static private var displayedCards : Array<String> = [
 		"companion", "drugs", "gang", "low-life", "wanted", "weapon",
 	];
+
+	private function checkEndConditions() : Bool
+	{
+		if (Reg.resources[0].quantity >= 30 || true) {
+			Reg.end = "The Important Individual";
+			Reg.endSentences = [
+				"You're now an important figure.",
+				"But no partying all day for you.",
+				"No, you, you will continue to work for your position.",
+				"Your earned it! Through hard work and dedication.",
+				"",
+				"You were made for this, right?",
+			];
+			return true;
+		}
+		return false;
+	}
 }
