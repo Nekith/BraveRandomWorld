@@ -18,18 +18,17 @@ class MenuState extends FlxState
     var y : Float = Lib.current.stage.stageHeight / 3.0;
     var w : Float = Lib.current.stage.stageWidth;
     var h : Float = Lib.current.stage.stageHeight;
-    var title : FlxText = new FlxText(5.0, 50.0, w - 10.0, "Brave Random World", 40);
+    var title : FlxText = new FlxText(5.0, 75.0, w - 10.0, "Brave Random World", 40);
     title.alignment = "center";
     add(title);
-    var sub : FlxText = new FlxText(5.0, 100.0, w - 10.0, "A text-based dystopia generator", 12);
+    var sub : FlxText = new FlxText(5.0, 125.0, w - 10.0, "A text-based dystopia generator", 12);
     sub.alignment = "center";
     add(sub);
-    add(new BraveButton(x - 128.0, y * 2.0, "New Game", newWorld));
-    add(new FlxText(135.0, y * 1.3, w - 270.0, "A new dystopia is generated for each of your game.", 12));
-    add(new FlxText(135.0, y * 1.3 + 20.0, w - 270.0, "The world status offers different problematics and solutions.", 12));
-    add(new FlxText(135.0, y * 1.3 + 40.0, w - 270.0, "Don't hesitate to try a few ones.", 12));
-    add(new FlxText(5.0, h - 50.0, 300.0, "v 0.13", 11));
-    add(new FlxText(5.0, h - 35.0, 300.0, "Nekith - Errant Works", 11));
+    add(new FlxText(135.0, y * 1.5, w - 270.0, "You're a conniver in a confusing world.", 12));
+    add(new FlxText(135.0, y * 1.5 + 20.0, w - 270.0, "State of the generated world may offers different problematics.", 12));
+    add(new FlxText(135.0, y * 1.5 + 40.0, w - 270.0, "Try a few ones. You may find a few things.", 12));
+    add(new BraveButton(x - 268.0 / 2.0, y * 2.3, "New Game", newWorld));
+    add(new FlxText(5.0, h - 35.0, 300.0, "v 0.14", 11));
     add(new FlxText(5.0, h - 20.0, 300.0, "www.errant-works.com", 11));
     super.create();
   }

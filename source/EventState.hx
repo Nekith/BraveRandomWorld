@@ -20,6 +20,7 @@ class EventState extends WindowState
       if (Reg.event == null) {
         FlxG.switchState(new LocationState());
       } else {
+        displayTopBar();
         displayRightPanel();
         for (i in 0...Reg.event.strings.length) {
           addText(Reg.event.strings[i], Reg.event.formats[i]);

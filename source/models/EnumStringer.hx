@@ -2,6 +2,7 @@ package models;
 
 import models.Cult;
 import models.Ethny;
+import models.Faction;
 import models.Gender;
 import models.Location;
 import models.Resource;
@@ -19,13 +20,46 @@ class EnumStringer
     return str;
   }
 
+  public static function ethnyStatus(s : EthnyStatus) : String
+  {
+    var str : String = "not installed";
+    if (s == EthnyStatus.Dominant) {
+      str = "dominant";
+    } else if (s == EthnyStatus.Installed) {
+      str = "installed";
+    }
+    return str;
+  }
+
   public static function ethnyStatusVerbose(s : EthnyStatus) : String
   {
-    var str : String = "a not-yet installed minority";
+    var str : String = "a not yet installed minority";
     if (s == EthnyStatus.Dominant) {
       str = "the dominant one";
     } else if (s == EthnyStatus.Installed) {
       str = "an installed minority";
+    }
+    return str;
+  }
+
+  public static function factionReputationVerbose(r : FactionReputation) : String
+  {
+    var str : String = "You don't catch any biased glance.";
+    if (r == FactionReputation.Friendly) {
+      str = "They seem friendly towards you";
+    } else if (r == FactionReputation.Exalted) {
+      str = "You're undeniably noticed.";
+    }
+    return str;
+  }
+
+  public static function cultStatus(s : CultStatus) : String
+  {
+    var str : String = "unrecognized";
+    if (s == CultStatus.Official) {
+      str = "official";
+    } else if (s == CultStatus.Recognized) {
+      str = "recognized";
     }
     return str;
   }

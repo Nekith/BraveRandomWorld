@@ -28,6 +28,7 @@ class LocationState extends WindowState
       if (Reg.event != null) {
         FlxG.switchState(new EventState());
       } else {
+        displayTopBar();
         displayRightPanel();
         if (Reg.location.nature == LocationNature.Apartments) {
           createApartments();
@@ -80,7 +81,7 @@ class LocationState extends WindowState
     addText(["Your private home."]);
     addText(["It's comfortable, it's impersonal and there's nobody. Except you."]);
     addText([""]);
-    var wealth : String = "It lacks some brillance. It could stand for a low-life flat.";
+    var wealth : String = "It lacks some brillance. It could stand for a low life flat.";
     if (Reg.resources[0].quantity >= 10) {
       wealth = "It starts to look like something. I'm on the right path.";
     } else if (Reg.resources[0].quantity >= 20) {
@@ -92,7 +93,7 @@ class LocationState extends WindowState
       if (material.nature == ResourceNature.Material) {
         for (social in Reg.resources) {
           if (social.nature == ResourceNature.Social) {
-            addChoiceWithArg("Throw a party (+2 " + social.name + ", -2 " + material.name ")", function(resources : Array<Resource>) {
+            addChoiceWithArg("Throw a party (+2 " + social.name + ", -2 " + material.name + ")", function(resources : Array<Resource>) {
               if (resources[0].quantity >= 2) {
                 resources[0].quantity -= 2;
                 resources[1].quantity += 2;
@@ -103,10 +104,10 @@ class LocationState extends WindowState
         }
       }
     }
-    if (Reg.cards.exists("drugs") == true && Reg.cards.get("drugs") >= 1 && Reg.cards.exists("low-life") == true && Reg.cards.get("low-life") >= 1) {
+    if (Reg.cards.exists("drugs") == true && Reg.cards.get("drugs") >= 1 && Reg.cards.exists("low life") == true && Reg.cards.get("low life") >= 1) {
       for (resource in Reg.resources) {
         if (resource.nature == ResourceNature.Spiritual) {
-          addChoiceWithArg("Drugs and young low-life (add 3 " + resource.name + ")", function(spiritual : Resource) {
+          addChoiceWithArg("Drugs and young low life (add 3 " + resource.name + ")", function(spiritual : Resource) {
             if (Reg.cards.get("drugs") >= 1) {
               Reg.cards.set("drugs", Reg.cards.get("drugs") - 1);
               spiritual.quantity += 3;
@@ -145,16 +146,16 @@ class LocationState extends WindowState
   {
     addText(["You're in the Lower Afterlife bar."]);
     addText([""]);
-    addText(["A low-life hangout place."]);
+    addText(["A low life hangout place."]);
     addText(["It's hot, it's messy and there's a lot of people."]);
     addChoiceWithArg("Go back to the streets", move, Reg.locations[0]);
-    if (Reg.cards.exists("low-life") == false || Reg.cards.get("low-life") <= 1) {
+    if (Reg.cards.exists("low life") == false || Reg.cards.get("low life") <= 1) {
       for (resource in Reg.resources) {
         if (resource.nature == ResourceNature.Material) {
-          addChoiceWithArg("Find young low-life contacts for 2 " + resource.name, function(material : Resource) {
+          addChoiceWithArg("Find young low life for 2 " + resource.name, function(material : Resource) {
             if (material.quantity >= 2) {
               material.quantity -= 2;
-              Reg.cards.set("low-life", FlxRandom.intRanged(2, 4));
+              Reg.cards.set("low life", FlxRandom.intRanged(2, 4));
               FlxG.switchState(new LocationState(["Now I need something to boost them. Then, the apartments."], [new FlxTextFormat(0xCCFF66)]));
             }
           }, resource);
@@ -185,13 +186,15 @@ class LocationState extends WindowState
         }
         materials.push(Reg.resources[i]);
       } else if (Reg.resources[i].nature == ResourceNature.Spiritual) {
-        addChoiceWithArg("Form a gang for 5 " + Reg.resources[i].name, function(resource : Resource) {
-          if (resource.quantity >= 5) {
-            resource.quantity -= 5;
-            Reg.cards.set("gang", FlxRandom.intRanged(4, 6));
-            FlxG.switchState(new LocationState(["Found a few guys. They seem ready to do a lot of things."], [new FlxTextFormat(0xCCFF66)]));
-          }
-        }, Reg.resources[i]);
+        if (Reg.cards.exists("gang") == false || Reg.cards.get("gang") <= 0) {
+          addChoiceWithArg("Form a gang for 5 " + Reg.resources[i].name, function(resource : Resource) {
+            if (resource.quantity >= 5) {
+              resource.quantity -= 5;
+              Reg.cards.set("gang", FlxRandom.intRanged(4, 6));
+              FlxG.switchState(new LocationState(["Found a few guys. They seem ready to do a lot of things."], [new FlxTextFormat(0xCCFF66)]));
+            }
+          }, Reg.resources[i]);
+        }
       }
     }
     for (resource in Reg.resources) {
@@ -270,6 +273,7 @@ class LocationState extends WindowState
     addText([""]);
     addText(["A corporate building."]);
     addText(["It's neutral, it's clean and there's a lot of people."]);
+    addText([EnumStringer.factionReputationVerbose(Reg.location.faction.reputation)]);
     var faction : MaterialFaction = cast(Reg.location.faction, MaterialFaction);
     if (faction.loan <= 0) {
       var amount : String = Std.string(faction.loanAmount());
@@ -290,7 +294,7 @@ class LocationState extends WindowState
       for (resource in Reg.resources) {
         if (resource.nature == ResourceNature.Social) {
           var amount : String = Std.string(faction.favorsCost());
-          addChoiceWithArg("Call favors (cost " + amount + " " + resource.name + ")", function(social : Resource) {
+          addChoiceWithArg("Call favors to help them for " + amount + " " + resource.name, function(social : Resource) {
             if (faction.callFavors(resource) == true) {
               FlxG.switchState(new LocationState(["Thank you for your help in this delicate situation. We'll remember this."], [new FlxTextFormat(0xCCFF66)]));
             }
@@ -300,7 +304,7 @@ class LocationState extends WindowState
     }
     for (resource in Reg.resources) {
       if (resource != faction.resource && resource.nature == ResourceNature.Material) {
-        addChoiceWithArg("Give 2 " + resource.name + " for 2 " + faction.resource.name, function(other : Resource) {
+        addChoiceWithArg("Trade -2 " + resource.name + " for +2 " + faction.resource.name, function(other : Resource) {
           if (faction.trade(other) == true) {
             FlxG.switchState(new LocationState([Generator.tradeComment()], [new FlxTextFormat(0xCCFF66)]));
           }
@@ -313,10 +317,12 @@ class LocationState extends WindowState
   {
     var cult : Cult = cast(Reg.location.faction, Cult);
     var status : String = EnumStringer.cultStatusVerbose(cult.status);
-    addText(["You're in the Elysium of the ", Reg.location.faction.name, ", ", status, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
+    addText(["You're in the Elysium of the ", Reg.location.faction.name, "."], [null, Resource.formatForNature(Reg.location.faction.resource.nature)]);
+    addText(["It's ", status, "."]);
     addText([""]);
     addText(["A spiritual place."]);
     addText(["It's cold, it's dark and there's a lot of people."]);
+    addText([EnumStringer.factionReputationVerbose(Reg.location.faction.reputation)]);
     addText([""]);
     if (Reg.cult != cult) {
       var amount : String = Std.string(cult.initiationCost());
@@ -337,6 +343,7 @@ class LocationState extends WindowState
         addChoice("Do profession (gain " + cult.resource.name + ")", function() {
           if (cult.resource.quantity < 30) {
             cult.resource.quantity += 3;
+            FlxG.switchState(new LocationState(["That's interesting. And they even thank me."], [new FlxTextFormat(0xCCFF66)]));
           }
         });
       }
@@ -349,6 +356,7 @@ class LocationState extends WindowState
     addText([""]);
     addText(["A meeting venue."]);
     addText(["It's warm, it's bright and there's a lot of people."]);
+    addText([EnumStringer.factionReputationVerbose(Reg.location.faction.reputation)]);
     var faction : SocialFaction = cast(Reg.location.faction, SocialFaction);
     if (faction.reputation == FactionReputation.Neutral) {
       var amount : String = Std.string(faction.membershipCost());

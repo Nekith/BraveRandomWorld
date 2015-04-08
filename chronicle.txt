@@ -3,11 +3,11 @@
   the act of deliberately displaying this file in
   non-fixed width font is bad for life-long karma
 
-== 0.16 =========================================
+== 0.17 =========================================
 
 ? saviour quest
 
-== 0.15 =========================================
+== 0.16 =========================================
 
   generate dominant gender
   generate other gender status
@@ -15,13 +15,21 @@
 ? sexism effects
 ? self-esteem
 
-== 0.14 =========================================
+== 0.15 =========================================
 
   set resistance 1
   set resistance 2
   apartment: induce gang
   playground: get information on the president
   apartment: gather the crew to plan
+
+== 0.14 =========================================
+
+x several user interface ...
+x .. adjustments and bug ...
+x ... fixes after internet ...
+x ... made its first ...
+x ... playtests and comments
 
 == 0.13 =========================================
 
