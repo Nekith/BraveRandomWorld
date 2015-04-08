@@ -92,7 +92,7 @@ class LocationState extends WindowState
       if (material.nature == ResourceNature.Material) {
         for (social in Reg.resources) {
           if (social.nature == ResourceNature.Social) {
-            addChoiceWithArg("Throw a party (+2 " + social.name + ", -2 " + material.name, function(resources : Array<Resource>) {
+            addChoiceWithArg("Throw a party (+2 " + social.name + ", -2 " + material.name ")", function(resources : Array<Resource>) {
               if (resources[0].quantity >= 2) {
                 resources[0].quantity -= 2;
                 resources[1].quantity += 2;
