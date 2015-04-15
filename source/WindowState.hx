@@ -48,7 +48,8 @@ class WindowState extends FlxState
       var resource : Resource = Reg.resources[i];
       var x : Float = Lib.current.stage.stageWidth / 4.0 * (i % 2 == 0 ? 2.0 : 3.0) + 5.0;
       var y : Float = (i == Reg.resources.length - 1 ? 49.0 : (i <= 1 ? 5.0 : 27.0));
-      var text : FlxText = new FlxText(x, y, Lib.current.stage.stageWidth / 2.0 - 10.0, resource.name + ": " + resource.quantity, 13);
+      var info : String = resource.name + ": " + resource.quantity + " (" + resource.faction.name.split(" ")[0] + ")";
+      var text : FlxText = new FlxText(x, y, Lib.current.stage.stageWidth / 2.0 - 10.0, info, 13);
       text.addFormat(Resource.formatForNature(resource.nature));
       add(text);
     }

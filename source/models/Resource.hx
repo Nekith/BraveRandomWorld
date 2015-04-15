@@ -16,6 +16,7 @@ enum ResourceNature
   public var nature(default, null) : ResourceNature;
   public var isMajor(default, null) : Bool;
   public var quantity(default, default) : Int;
+  public var faction(default, default) : Faction;
 
   public function new(name : String, nature : ResourceNature)
   {

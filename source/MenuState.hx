@@ -28,7 +28,7 @@ class MenuState extends FlxState
     add(new FlxText(135.0, y * 1.5 + 20.0, w - 270.0, "State of the generated world may offers different problematics.", 12));
     add(new FlxText(135.0, y * 1.5 + 40.0, w - 270.0, "Try a few ones. You may find a few things.", 12));
     add(new BraveButton(x - 268.0 / 2.0, y * 2.3, "New Game", newWorld));
-    add(new FlxText(5.0, h - 35.0, 300.0, "v 0.14", 11));
+    add(new FlxText(5.0, h - 35.0, 300.0, "v 0.15", 11));
     add(new FlxText(5.0, h - 20.0, 300.0, "www.errant-works.com", 11));
     super.create();
   }

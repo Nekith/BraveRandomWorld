@@ -57,7 +57,7 @@ class BuilderState extends FlxState
 
   private function generateResources() : Void
   {
-    for (i in 0...5) {
+    for (i in 0...4) {
       var name : String;
       while (true) {
         name = Generator.name(2);
@@ -87,7 +87,7 @@ class BuilderState extends FlxState
 
   private function generateEthnies() : Void
   {
-    for (i in 0...4) {
+    for (i in 0...3) {
       var name : String = Generator.name(FlxRandom.intRanged(3, 6));
       var ethny : Ethny = new Ethny(name);
       Reg.ethnies.push(ethny);
@@ -97,7 +97,7 @@ class BuilderState extends FlxState
     if (FlxRandom.intRanged(0, 4) == 0) {
       Reg.ethnies[Reg.ethnies.length - 1].status = EthnyStatus.Prejudiced;
     }
-    Reg.ethny = Reg.ethnies[FlxRandom.intRanged(0, 3)];
+    Reg.ethny = Reg.ethnies[FlxRandom.intRanged(0, 2)];
   }
 
   private function generateFactions() : Void
@@ -106,15 +106,18 @@ class BuilderState extends FlxState
     for (resource in Reg.resources) {
       if (resource.nature == ResourceNature.Material) {
         var name : String = Generator.name(FlxRandom.intRanged(2, 4)) + " " + Generator.materialFactionSuffix();
-        Reg.factions.push(new MaterialFaction(name, resource));
+        var faction : Faction = new MaterialFaction(name, resource);
+        resource.faction = faction;
+        Reg.factions.push(faction);
       } else if (resource.nature == ResourceNature.Spiritual) {
-        var name : String = Generator.name(FlxRandom.intRanged(3, 5)) + " " + Generator.cultSuffix();
+        var name : String = Generator.name(FlxRandom.intRanged(3, 4)) + " " + Generator.cultSuffix();
         var status : CultStatus = (FlxRandom.intRanged(0, 3) == 0 ? CultStatus.Unrecognized : CultStatus.Recognized);
         var need : Resource = null;
         do {
           need = Reg.resources[FlxRandom.intRanged(0, Reg.resources.length - 1)];
         } while (need == resource && need.nature != ResourceNature.Material);
         var cult : Cult = new Cult(name, status, resource, need);
+        resource.faction = cult;
         Reg.factions.push(cult);
         cults.push(cult);
       } else if (resource.nature == ResourceNature.Social) {
@@ -123,7 +126,9 @@ class BuilderState extends FlxState
         do {
           need = Reg.resources[FlxRandom.intRanged(0, Reg.resources.length - 1)];
         } while (need == resource && need.nature != ResourceNature.Material);
-        Reg.factions.push(new SocialFaction(name, resource, need));
+        var faction : Faction = new SocialFaction(name, resource, need);
+        resource.faction = faction;
+        Reg.factions.push(faction);
       }
     }
     if (cults.length > 0) {

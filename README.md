@@ -26,4 +26,3 @@ Made during vacation far away fron home with no good internet access so it's kin
 
 * haxe 3.1.3
 * flixel 3.3.8
-* flixel-ui 1.0.2

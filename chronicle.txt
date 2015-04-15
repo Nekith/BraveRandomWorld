@@ -6,22 +6,25 @@
 == 0.17 =========================================
 
 ? saviour quest
+? loan enforcers event
+? sexism effects
+? self-esteem
 
 == 0.16 =========================================
 
   generate dominant gender
   generate other gender status
-? loan enforcers (material or social or spiritual ways of dealing with that)
-? sexism effects
-? self-esteem
-
-== 0.15 =========================================
-
-  set resistance 1
-  set resistance 2
   apartment: induce gang
   playground: get information on the president
   apartment: gather the crew to plan
+
+== 0.15 =========================================
+
+x reduce to 4 resources
+x reduce to 3 ethnies
+x display resources-factions association
+x shorten some factions names
+  display existing resistance quest markers
 
 == 0.14 =========================================
 
