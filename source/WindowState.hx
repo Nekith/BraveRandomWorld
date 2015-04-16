@@ -116,7 +116,7 @@ class WindowState extends FlxState
     }
 
   static private var displayedCards : Array<String> = [
-    "companion", "drugs", "gang", "low life", "wanted", "weapon",
+    "companion", "drugs", "gang", "low life", "resistance", "wanted", "weapon",
   ];
 
   private function checkEndConditions() : Bool

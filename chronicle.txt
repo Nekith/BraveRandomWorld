@@ -24,7 +24,7 @@ x reduce to 4 resources
 x reduce to 3 ethnies
 x display resources-factions association
 x shorten some factions names
-  display existing resistance quest markers
+x display existing resistance quest markers
 
 == 0.14 =========================================
 
@@ -166,8 +166,8 @@ x apartment: call companion to drain
 
 == Resistance Quest =============================
 
-  sprawl: form a gang
-  streets: rob a business
+x sprawl: form a gang
+x streets: rob a business
   apartment: induce gang
   playground: get information on president
   apartment: gather the crew to plan

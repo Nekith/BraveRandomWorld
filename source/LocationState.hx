@@ -191,6 +191,9 @@ class LocationState extends WindowState
             if (resource.quantity >= 5) {
               resource.quantity -= 5;
               Reg.cards.set("gang", FlxRandom.intRanged(4, 6));
+              if (Reg.cards.exists("resistance") == false || Reg.cards.get("resistance") <= 0) {
+                Reg.cards.set("resistance", 1);
+              }
               FlxG.switchState(new LocationState(["Found a few guys. They seem ready to do a lot of things."], [new FlxTextFormat(0xCCFF66)]));
             }
           }, Reg.resources[i]);
@@ -261,6 +264,9 @@ class LocationState extends WindowState
         Reg.cards.set("gang", Math.round(Math.max(0.0, Reg.cards.get("gang") - lost)));
         Reg.cards.set("chaos", (Reg.cards.exists("wanted") ? Reg.cards.get("chaos") : 0) + 1);
         Reg.cards.set("wanted", Reg.cards.get("wanted") + 1);
+        if (Reg.cards.exists("resistance") == true && Reg.cards.get("resistance") == 1) {
+          Reg.cards.set("resistance", 2);
+        }
         FlxG.switchState(new LocationState(["You've robbed a business, gained " + Std.string(amount) + " " + res.name + " and lost " + lostStr + "."],
             [new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), Resource.formatForNature(res.nature), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66), new FlxTextFormat(0xCCFF66)]));
       });

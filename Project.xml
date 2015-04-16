@@ -18,7 +18,6 @@
 	<assets path="assets" />
 
 	<haxelib name="flixel"/>
-	<haxelib name="flixel-ui" />
 	
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
 </project>
