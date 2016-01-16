@@ -108,12 +108,12 @@ class WindowState extends FlxState
   }
 
   @:generic
-    private function addChoiceWithArg<T>(label : String, action : T -> Void, arg : T)
-    {
-      addChoice(label, function() {
-        action(arg);
-      });
-    }
+  private function addChoiceWithArg<T>(label : String, action : T -> Void, arg : T)
+  {
+    addChoice(label, function() {
+      action(arg);
+    });
+  }
 
   static private var displayedCards : Array<String> = [
     "companion", "drugs", "gang", "low life", "resistance", "wanted", "weapon",

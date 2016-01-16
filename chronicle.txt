@@ -12,11 +12,11 @@
 
 == 0.16 =========================================
 
-  generate dominant gender
-  generate other gender status
   apartment: induce gang
   playground: get information on the president
   apartment: gather the crew to plan
+  generate dominant gender
+  generate other gender status
 
 == 0.15 =========================================
 
